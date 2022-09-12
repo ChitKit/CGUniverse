@@ -12,7 +12,6 @@ export const DELETE_MODEL = 'DELETE_MODEL';
 export const EDIT_MODEL = 'EDIT_MODEL';
 export const GET_MODEL = 'GET_MODEL';
 export const GET_MODELS = 'GET_MODELS';
-export const FILTER_MODELS = 'FILTER_MODELS';
 
 // COMMENTS
 
@@ -26,3 +25,6 @@ export const GET_COMMENTS = 'GET_COMMENTS';
 export const CREATE_LIKE = 'CREATE_LIKE';
 export const DELETE_LIKE = 'DELETE_LIKE'; // ?? нужен ли ?
 export const GET_LIKES = 'GET_LIKES';
+
+// FILTER
+export const FILTER_MODELS = 'FILTER_MODELS';
