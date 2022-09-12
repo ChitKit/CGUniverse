@@ -15,6 +15,7 @@ import Favourite from './components/Favourite/Favourite';
 import { setAuth } from './redux/actions/authActions';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
+import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 
 
 
@@ -45,7 +46,7 @@ function App() {
         active={modalActive}
         setActive={setModalActive}
       >
-        {wind === 'log'
+        {/* {wind === 'log'
           ? (
             <Login />
           ) : wind === 'reg'
@@ -56,9 +57,10 @@ function App() {
                 <BasketShop />
               ) : (
                 <p />
-              )}
+              )} */}
+        <SceneOneModel />
       </Modal>
-      <Page />
+      {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
