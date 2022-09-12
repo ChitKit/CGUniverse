@@ -1,0 +1,267 @@
+{
+    "asset" : {
+        "copyright" : "Sergey_Zheltov",
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "stone_low",
+            "scale" : [
+                1.1553901433944702,
+                1.1553901433944702,
+                1.1553901433944702
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "crystals_low",
+            "rotation" : [
+                0.3517727255821228,
+                0.6565608978271484,
+                -0.17411908507347107,
+                0.6441011428833008
+            ],
+            "scale" : [
+                0.20439869165420532,
+                0.1703321635723114,
+                0.20439864695072174
+            ],
+            "translation" : [
+                0.029209820553660393,
+                0.7496107220649719,
+                0.020580312237143517
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                1,
+                1,
+                1
+            ],
+            "emissiveTexture" : {
+                "index" : 0
+            },
+            "name" : "stone_ore",
+            "normalTexture" : {
+                "index" : 1
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 2
+                },
+                "metallicRoughnessTexture" : {
+                    "index" : 3
+                }
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.019",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Cube.014",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 2
+        },
+        {
+            "sampler" : 0,
+            "source" : 3
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "stone_ore_sample_low_stone_ore_Emissive.png.001",
+            "uri" : "stone_ore_sample_low_stone_ore_Emissive.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "stone_ore_sample_low_stone_ore_Normal.png.001",
+            "uri" : "stone_ore_sample_low_stone_ore_Normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "stone_ore_sample_low_stone_ore_BaseColor.png.001",
+            "uri" : "stone_ore_sample_low_stone_ore_BaseColor.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "stone_ore_sample_low_stone_ore_Roughness.png.001",
+            "uri" : "stone_ore_sample_low_stone_ore_Roughness.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 316,
+            "max" : [
+                1.066969871520996,
+                1.3614050149917603,
+                1.029880404472351
+            ],
+            "min" : [
+                -0.9227722883224487,
+                -0.79814213514328,
+                -1.2280384302139282
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 316,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 316,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 1458,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 196,
+            "max" : [
+                5.24819803237915,
+                5.036086559295654,
+                7.059228420257568
+            ],
+            "min" : [
+                -2.688129186630249,
+                -6.808625221252441,
+                -2.6962203979492188
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 196,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 196,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 840,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 3792,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3792,
+            "byteOffset" : 3792
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2528,
+            "byteOffset" : 7584
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2916,
+            "byteOffset" : 10112
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2352,
+            "byteOffset" : 13028
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2352,
+            "byteOffset" : 15380
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1568,
+            "byteOffset" : 17732
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1680,
+            "byteOffset" : 19300
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 20980,
+            "uri" : "ore.bin"
+        }
+    ]
+}
