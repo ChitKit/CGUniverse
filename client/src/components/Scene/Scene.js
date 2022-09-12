@@ -13,6 +13,7 @@ export default function Scene() {
         <ambientLight intensity={0.2} />
         <pointLight position={[10, 30, 10]} />
         <Model />
+
         <OrbitControls />
         {/* <Environment preset="dawn" background /> */}
 

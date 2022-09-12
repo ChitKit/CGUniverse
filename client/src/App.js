@@ -23,9 +23,11 @@ import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 function App() {
   const [modalActive, setModalActive] = useState(false);
 
+
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
+  const [modelId, setModelId] = useState(1);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -42,11 +44,13 @@ function App() {
       {/* <Routes>
         <Route path="/" element={<Scene />} />
       </Routes> */}
+      {modalActive
+      && (
       <Modal
         active={modalActive}
         setActive={setModalActive}
       >
-        {/* {wind === 'log'
+        {wind === 'log'
           ? (
             <Login />
           ) : wind === 'reg'
@@ -55,17 +59,21 @@ function App() {
             ) : wind === 'basket'
               ? (
                 <BasketShop />
-              ) : (
-                <p />
-              )} */}
-        <SceneOneModel />
+              ) : wind === 'onemodel'
+                ? (
+                  <SceneOneModel modelId={modelId} />
+                ) : (
+                  <p />
+                )}
+
       </Modal>
+      )}
       {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
       </Routes>
 

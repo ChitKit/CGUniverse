@@ -4,6 +4,7 @@ const { UserModel } = require('../../db/models');
 const route = express.Router();
 
 route.get('/models/:modelId', async (req, res) => {
+  console.log('req');
   const { modelId } = req.params;
   const result = await UserModel.findOne({ where: { id: modelId } });
   res.json(result);

@@ -169,10 +169,10 @@
     display: grid;
     column-gap: 90px;
     row-gap: 90px;
-    grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
- }
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
 
-  
+
 
 
 

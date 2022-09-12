@@ -3,11 +3,12 @@
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function OneModel(props) {
+  console.log('ONE MODEL HERE !!!! ====>>>>>', props.oneModel);
   const group = useRef();
-  useFrame(() => { group.current.rotation.z += 0.003; }, []);
-  const { nodes, materials } = useGLTF('http://localhost:3002/models/wow_axe.glb');
+  const { nodes, materials } = useGLTF(`http://localhost:3002${props.oneModel.path}`);
   // console.log('NODES', nodes);
   // console.log('MATERIAL', (materials));
   const keyArr = Object.keys(nodes);
