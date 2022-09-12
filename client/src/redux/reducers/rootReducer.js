@@ -4,6 +4,7 @@ import commentReducer from './commentReducer';
 import filterSortReducer from './filterSortReducer';
 import likeReducer from './likeReducer';
 import modelReducer from './modelReducer';
+import sortReducer from './sortReducer';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   model: modelReducer,
   like: likeReducer,
   filterModel: filterSortReducer,
+  sort: sortReducer,
 
 });
 
