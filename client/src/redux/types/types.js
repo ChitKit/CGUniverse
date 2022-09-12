@@ -29,3 +29,6 @@ export const GET_LIKES = 'GET_LIKES';
 // FILTER & SORT
 export const FILTER_MODELS = 'FILTER_MODELS';
 export const SORT_MODELS = 'SORT_MODELS';
+
+// SEARCH
+export const SEARCH_MODELS = 'SEARCH_MODELS';
