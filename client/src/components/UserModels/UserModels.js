@@ -2,23 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function UserModels({ el }) {
+export default function UserModels({
+  el, setModelId, setwind, setModalActive,
+}) {
   const [likesModel, setLikesModel] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:3002/model/like/${el.id}}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setLikesModel(data);
       });
   }, []);
 
-  console.log(likesModel, 'likesModel=====');
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        setModelId(el.id);
+        setwind('onemodel');
+        setModalActive(true);
+      }}
+    >
       <img
         className="model-img"
-        src={`http://localhost:3002/${el.pic}`}
+        src={`http://localhost:3002${el.pic}`}
         alt={el.name}
       />
       <div className="card-footer">
