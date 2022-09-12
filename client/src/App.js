@@ -15,6 +15,7 @@ import Favourite from './components/Favourite/Favourite';
 import { setAuth } from './redux/actions/authActions';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
+import FindComand from './components/FindComand/FindComand';
 
 
 
@@ -45,7 +46,7 @@ function App() {
         active={modalActive}
         setActive={setModalActive}
       >
-        {wind === 'log'
+        {/* {wind === 'log'
           ? (
             <Login />
           ) : wind === 'reg'
@@ -56,15 +57,16 @@ function App() {
                 <BasketShop />
               ) : (
                 <p />
-              )}
+              )} */}
       </Modal>
-      <Page />
+      {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profileLike" element={<ProfileLike />} />
+        <Route path="/findComand" element={<FindComand />} />
       </Routes>
 
     </div>

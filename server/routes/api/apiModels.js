@@ -11,7 +11,7 @@ route.get('/models/:modelId', async (req, res) => {
 
 route.get('/models/farst/10', async (req, res) => {
   const result = await UserModel.findAll({ limit: 10 });
-  res.json(result.pic);
+  res.json(result);
 });
 
 route.get('/models/second/10', async (req, res) => {
@@ -20,7 +20,7 @@ route.get('/models/second/10', async (req, res) => {
   for (let i = 10; i < result.length; i += 1) {
     data.push(result[i]);
   }
-  res.json(result.pic);
+  res.json(data);
 });
 
 route.get('/models', async (req, res) => {

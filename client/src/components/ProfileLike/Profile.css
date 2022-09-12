@@ -1,5 +1,8 @@
 .profile-general-container{
     background-color: #f2f2f2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .profile-photo-name-and-btn{
@@ -168,8 +171,8 @@ color: #4cc8f1;
 
  .profile-two-sides-left-results-grid{
     display: grid;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 120px;
+    row-gap: 120px;
     grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
  }
 
