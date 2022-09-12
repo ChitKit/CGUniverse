@@ -6,7 +6,7 @@ export default function Filter({ setAuthCategory }) {
   const [filter, setFilter] = useState(false);
   const [sort, setSort] = useState(false);
   const [category, setCategory] = useState([]);
-
+  const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3002/api/category')
@@ -15,6 +15,7 @@ export default function Filter({ setAuthCategory }) {
   }, []);
   const handlerClick = (e) => {
     setAuthCategory(e.target.innerText);
+    setCategoryName(e.target.innerText);
   };
 
   return (
@@ -25,13 +26,22 @@ export default function Filter({ setAuthCategory }) {
             <div className="filter-category">
               <span className="filter-header">Категории</span>
               <span className="filter-drop-down">
-                <span className={filter ? 'filter-drop-down-label-value' : 'filter-drop-down-label-value-open'}>
-                  Все категории
-                </span>
+                {!categoryName
+                  ? (
+                    <span className={filter ? 'filter-drop-down-label-value' : 'filter-drop-down-label-value-open'}>
+                      Все категории
+                    </span>
+                  )
+                  : (
+                    <span className={filter ? 'filter-drop-down-label-value' : 'filter-drop-down-label-value-open'}>
+                      {categoryName}
+                    </span>
+                  )}
               </span>
               <div className={filter ? 'filter-dd-menu' : 'filter-dd-none'}>
                 {/* выпадающий список */}
                 <ul className="filter-ul">
+                  <li className="filter-dd-el" onClick={handlerClick}>Все категории</li>
                   {category.map((el) => (
                     <li className="filter-dd-el" onClick={handlerClick}>{el.name}</li>
                   ))}

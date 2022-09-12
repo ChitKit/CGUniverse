@@ -7,7 +7,8 @@ export default function OneCard({ model }) {
     <div className="card">
       <img
         className="model-img"
-        src="https://www.rabstol.net/uploads/gallery/main/640/rabstol_net_cowboy_bebop_01.jpg"
+        // src={`http://localhost:3002/${model.pic}`}
+        src="https://img-corp.com/images/about/Financial-101.png"
         alt="img"
       />
       <div className="card-footer">
