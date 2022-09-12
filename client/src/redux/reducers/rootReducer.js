@@ -6,6 +6,7 @@ import likeReducer from './likeReducer';
 import modelReducer from './modelReducer';
 import sortReducer from './sortReducer';
 import oneModelReducer from './oneModelReducer';
+import searchReducer from './searchReducer';
 
 
 
@@ -18,7 +19,7 @@ const rootReducer = combineReducers({
   onemodel: oneModelReducer,
   filterModel: filterSortReducer,
   sort: sortReducer,
-
+  search: searchReducer,
 });
 
 export default rootReducer;
