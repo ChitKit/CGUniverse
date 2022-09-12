@@ -17,17 +17,16 @@ route.get('/like/:id', async (req, res) => {
   res.json(result);
 });
 
-route.get('/like', async (req, res) => {
-  const { userId } = req.query;
-  console.log('===========================', userId);
-  const result = await LikeModel.findAll({ include: UserModel });
-  res.json(result);
-});
-
 route.delete('/like/:id', async (req, res) => {
   const { id } = req.params;
   await LikeModel.destroy({ where: { id } });
   res.sendStatus(200);
+});
+
+route.get('/like', async (req, res) => {
+  const { id } = req.query;
+  const result = await LikeModel.findAll({ where: { user_id: id }, include: 'UserModel' });
+  res.json(result);
 });
 
 module.exports = route;

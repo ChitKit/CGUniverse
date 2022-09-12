@@ -33,7 +33,7 @@ export const createLike_THUNK = (id) => (dispatch) => {
 
 export const getLike_THUNK = (userId) => (dispatch) => {
   console.log(userId);
-  fetch(`http://localhost:3002/apilike/like?userId=${userId || 0}`)
+  fetch(`http://localhost:3002/apilike/like?user_id=${userId}`)
     .then((res) => res.json())
     .then((res) => {
       console.log('getLike_THUNK', res);

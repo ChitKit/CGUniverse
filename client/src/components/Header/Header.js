@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import './Header.css';
 
@@ -147,9 +147,9 @@ export default function Header({ setModalActive, setwind }) {
             </>
           ) : (
             <>
-              <a>
+              <Link to="/profile">
                 <img className="header-main-icon" alt="ava" src="/" />
-              </a>
+              </Link>
               <a className="header-btn header-right-btn2 heade-btn-logout" href="#">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
               </a>
