@@ -34,3 +34,20 @@
 .paused {
     animation-play-state: paused;
 }
+
+.btn-all-model {
+    background-color: #28c9ff;
+
+}
+
+.btn-all-model:hover {
+    background-color: #1caad9;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.Favourite-second-BG {
+    background-color: #e8f7fb;
+    padding-bottom: 30px;
+}

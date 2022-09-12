@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useEffect, useState } from 'react';
 import './Filter.css';
 
-export default function Filter() {
+export default function Filter({ setAuthCategory }) {
   const [filter, setFilter] = useState(false);
   const [sort, setSort] = useState(false);
+  const [category, setCategory] = useState([]);
+
+
+  useEffect(() => {
+    fetch('http://localhost:3002/api/category')
+      .then((res) => res.json())
+      .then((res) => setCategory(res));
+  }, []);
+  const handlerClick = (e) => {
+    setAuthCategory(e.target.innerText);
+  };
+
   return (
     <div className="filter-container">
       <div className="filter-content-header">
@@ -19,11 +32,9 @@ export default function Filter() {
               <div className={filter ? 'filter-dd-menu' : 'filter-dd-none'}>
                 {/* выпадающий список */}
                 <ul className="filter-ul">
-                  <li className="filter-dd-el">Все категории</li>
-                  <li className="filter-dd-el">Animal</li>
-                  <li className="filter-dd-el">Tehn</li>
-                  <li className="filter-dd-el">Human</li>
-                  <li className="filter-dd-el">Disign</li>
+                  {category.map((el) => (
+                    <li className="filter-dd-el" onClick={handlerClick}>{el.name}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -43,8 +54,8 @@ export default function Filter() {
             <div className={sort ? 'filter-dd-menu' : 'filter-dd-none'}>
               {/* выпадающий список */}
               <ul className="filter-ul">
-                <li className="filter-dd-el">По дате добавления</li>
-                <li className="filter-dd-el">По популярности</li>
+                <li className="filter-dd-el" onClick={handlerClick}>По дате добавления</li>
+                <li className="filter-dd-el" onClick={handlerClick}>По популярности</li>
               </ul>
             </div>
           </div>

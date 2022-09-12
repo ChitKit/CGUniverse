@@ -1,6 +1,7 @@
 .card {
   display: block;
   max-width: 410px;
+  max-height: 100%;
   width: calc(33.33333%-31px);
   margin: auto;
   background-color: hsla(0, 0%, 99%, 0.973);
@@ -32,9 +33,11 @@
   color: solid #798284
 }
 .card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  overflow-x: hidden;
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start; */
   padding: 5px;
   margin: 3px;
 }
@@ -58,6 +61,7 @@
 
 .card-footer-rigth {
   display: flex;
+  padding-left: 55%;
 }
 .icon {
   display: flex;
@@ -67,7 +71,7 @@
 }
 .icon-img {
   max-width: 15px;
-  width: 100%;
+  min-width: 10%;
   filter: opacity(0.4) drop-shadow(0 0 0 rgb(124, 111, 111));
 }
 .card-footer-text {

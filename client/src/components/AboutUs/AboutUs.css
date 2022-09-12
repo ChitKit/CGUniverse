@@ -1,6 +1,7 @@
 .AboutUs-body {
     height: 100%;
     min-height: 450px;
+    padding-bottom: 25px;
 }
 
 .AboutUs-container {

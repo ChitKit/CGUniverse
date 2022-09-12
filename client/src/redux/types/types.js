@@ -11,6 +11,7 @@ export const CREATE_MODEL = 'CREATE_MODEL';
 export const DELETE_MODEL = 'DELETE_MODEL';
 export const EDIT_MODEL = 'EDIT_MODEL';
 export const GET_MODELS = 'GET_MODELS';
+export const FILTER_MODELS = 'FILTER_MODELS';
 
 // COMMENTS
 

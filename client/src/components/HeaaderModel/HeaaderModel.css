@@ -86,7 +86,14 @@
 }
 
 #canvas {
-    margin-top: 200px;
-    height: 600px;
+    margin-top: 12%;
     width: 600px;
+    height: 600px;
+}
+
+.header-model-btn-text {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    color: black;
 }

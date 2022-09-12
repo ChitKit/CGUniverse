@@ -6,17 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserModels from '../UserModels/UserModels';
 import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
+import { setAuth } from '../../redux/actions/authActions';
 
 export default function Profile() {
-  const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state);
+  const { like } = useSelector((state) => state);
   const { model } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   // добавить в танк из useSelector auth
   useEffect(() => {
     dispatch(getModels_THUNK());
   }, []);
 
-  const { like } = useSelector((state) => state);
 
   // добавить в танк из useSelector auth
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Profile() {
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">
-                <span className="profile-name-span">Ваше имя</span>
+                <span className="profile-name-span">{auth?.name}</span>
               </a>
             </h1>
             <div className="profile-btn-edit-profile">

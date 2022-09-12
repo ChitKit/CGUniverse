@@ -3,6 +3,7 @@ import {
   DELETE_MODEL,
   GET_MODELS,
   EDIT_MODEL,
+  FILTER_MODELS,
 } from '../types/types';
 
 export default (state = [], action) => {
@@ -20,6 +21,10 @@ export default (state = [], action) => {
 
     case GET_MODELS:
       return payload;
+
+    case FILTER_MODELS:
+      return payload;
+
     default:
       return state;
   }

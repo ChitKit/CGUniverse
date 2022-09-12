@@ -22,7 +22,7 @@ export default function UserModels({ el }) {
     <div className="card">
       <img
         className="model-img"
-        src="https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg"
+        src={`http://localhost:3002/${el.pic}`}
         alt={el.name}
       />
       <div className="card-footer">

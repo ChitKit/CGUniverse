@@ -2,14 +2,13 @@ import React from 'react';
 import './OneCard.css';
 
 
-export default function Page() {
+export default function OneCard({ model }) {
   return (
     <div className="card">
       <img
         className="model-img"
         src="https://www.rabstol.net/uploads/gallery/main/640/rabstol_net_cowboy_bebop_01.jpg"
         alt="img"
-        onClick={() => (console.log('model`s modal'))}
       />
       <div className="card-footer">
         <div className="card-footer-left" onClick={() => (console.log('author`s profile'))}>
@@ -18,7 +17,7 @@ export default function Page() {
             src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
             alt="img"
           />
-          <p className="model-name-title">knight witch</p>
+          <p className="model-name-title">{model?.name}</p>
         </div>
         <div className="card-footer-rigth">
           <div className="icon">

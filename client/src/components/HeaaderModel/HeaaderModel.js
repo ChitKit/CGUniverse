@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Scene from '../Scene/Scene';
 import './HeaaderModel.css';
 
-export default function HeaaderModel() {
+export default function HeaaderModel({ setModalActive, setwind }) {
+  const { auth } = useSelector((state) => state);
+
   return (
     <div className="heaader-model-body">
       <div className="heaader-model-container-first">
@@ -27,8 +31,22 @@ export default function HeaaderModel() {
           </p>
         </div>
         <div className="heaader-model-btn-container">
-          <button className="btn header-model-btn-reg" type="button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
-          <button className="btn header-model-btn-models-list" type="button">ПОСМОТРЕТЬ МОДЕЛИ</button>
+          {!auth?.id
+            ? (
+              <button
+                className="btn header-model-btn-reg"
+                type="button"
+                onClick={() => {
+                  setwind('reg');
+                  setModalActive(true);
+                }}
+              >
+                <h3 className="header-model-btn-text">ЗАРЕГИСТРИРОВАТЬСЯ</h3>
+              </button>
+            ) : (
+              null
+            )}
+          <button className="btn header-model-btn-models-list" type="button"><Link to="/page" className="header-model-btn-text"><h3 className="header-model-btn-text">ПОСМОТРЕТЬ МОДЕЛИ</h3></Link></button>
         </div>
       </div>
       <div id="canvas" className="heaader-model-container-second">

@@ -31,6 +31,12 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Минералы',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
     ];
 
     await queryInterface.bulkInsert('Categories', categoryArr, {});
