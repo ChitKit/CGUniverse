@@ -7,8 +7,7 @@ export default function OneCard({ model }) {
     <div className="card">
       <img
         className="model-img"
-        // src={`http://localhost:3002/${model.pic}`}
-        src="https://img-corp.com/images/about/Financial-101.png"
+        src={`http://localhost:3002/${model.pic}`}
         alt="img"
       />
       <div className="card-footer">
@@ -21,10 +20,10 @@ export default function OneCard({ model }) {
           <p className="model-name-title">{model?.name}</p>
         </div>
         <div className="card-footer-rigth">
-          <div className="icon">
+          {/* <div className="icon">
             <img className="icon-img" src="/icons/2102115.png" alt="..." />
             <p className="card-footer-text">1000</p>
-          </div>
+          </div> */}
           <div className="icon comment" onClick={() => (console.log('comment'))}>
             <img className="icon-img" src="/icons/chat.png" alt="..." />
             <p className="card-footer-text">1000</p>

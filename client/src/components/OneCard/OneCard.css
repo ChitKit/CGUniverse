@@ -71,7 +71,7 @@
 
 .card-footer-rigth {
   display: flex;
-  padding-left: 45%;
+  justify-content: flex-end;
 }
 
 .icon {

@@ -26,5 +26,6 @@ export const CREATE_LIKE = 'CREATE_LIKE';
 export const DELETE_LIKE = 'DELETE_LIKE'; // ?? нужен ли ?
 export const GET_LIKES = 'GET_LIKES';
 
-// FILTER
+// FILTER & SORT
 export const FILTER_MODELS = 'FILTER_MODELS';
+export const SORT_MODELS = 'SORT_MODELS';
