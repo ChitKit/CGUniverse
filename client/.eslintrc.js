@@ -29,5 +29,6 @@ module.exports = {
     camelcase: 0,
     'no-multiple-empty-lines': 0,
     'no-extra-boolean-cast': 0,
+    'no-nested-ternary': 0,
   },
 };

@@ -9,11 +9,16 @@ import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
 import { setAuth } from '../../redux/actions/authActions';
 
-export default function Profile({ setModalActive, setwind, setModelId }) {
+export default function Profile({
+  setModalActive, setwind, avatar, setModelId,
+}) {
   const { auth } = useSelector((state) => state);
   const { like } = useSelector((state) => state);
   const { model } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+
+  // загрузка фото
 
   // добавить в танк из useSelector auth
   useEffect(() => {
@@ -30,7 +35,20 @@ export default function Profile({ setModalActive, setwind, setModelId }) {
     <div className="profile-general-container">
       <div className="profile-first-container">
         <div className="profile-photo-name-and-btn">
-          <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          <div
+            className="profile-photo-contener"
+            onClick={() => {
+              setwind('avatar');
+              setModalActive(true);
+            }}
+          >
+            <span className="profile-photo-text">Изменить фотографию</span>
+            {
+          avatar
+            ? <img className="profile-photo" src={`http://localhost:3002/${avatar}`} alt="пустое фото" />
+            : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          }
+          </div>
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">

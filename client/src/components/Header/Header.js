@@ -4,19 +4,27 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
+import { searchModels_THUNK } from '../../redux/actions/searchAction';
+import Modal from '../Modal/Modal';
 import './Header.css';
 
 export default function Header({ setModalActive, setwind }) {
-  const { auth } = useSelector((state) => state);
+  const { auth, search } = useSelector((state) => state);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
+  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(searchQuery);
 
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
   };
+
+  useEffect(() => {
+    dispatch(searchModels_THUNK(searchQuery));
+  }, [searchQuery]);
 
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
@@ -98,10 +106,22 @@ export default function Header({ setModalActive, setwind }) {
       </div>
       <div className="header-container-third">
         <a className="header-input-link" href="#">
-          <input className="header-form-control" type="search" placeholder="Search" aria-label="Search" />
+          <input
+            value={searchQuery}
+            onChange={(q) => (setSearchQuery(q.target.value))}
+            className="header-form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
           {/* <button className="header-form-btn" type="submit">Search</button> */}
         </a>
       </div>
+      {/* {search.length && (
+      <Modal>
+        <div>hihihi</div>
+      </Modal>
+      )} */}
       <div className="header-container-fourth">
         <a className="header-right-btn" href="#">
           <span
