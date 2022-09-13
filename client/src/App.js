@@ -15,16 +15,24 @@ import Favourite from './components/Favourite/Favourite';
 import { setAuth } from './redux/actions/authActions';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
+import FindComand from './components/FindComand/FindComand';
+import AvatarLoading from './components/AvatarLoading/AvatarLoading';
+import SceneOneModel from './components/SceneOneModel/SceneOneModel';
+import EditProgile from './components/EditProgile/EditProgile';
 
 
 
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
+  const [img, setImg] = useState(null);
+  const [avatar, setAvatar] = useState(null);
+
 
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
+  const [modelId, setModelId] = useState(1);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -41,30 +49,43 @@ function App() {
       {/* <Routes>
         <Route path="/" element={<Scene />} />
       </Routes> */}
+      {modalActive
+      && (
       <Modal
         active={modalActive}
         setActive={setModalActive}
       >
         {wind === 'log'
           ? (
-            <Login />
+            <Login setModalActive={setModalActive} />
           ) : wind === 'reg'
             ? (
-              <Registration />
+              <Registration setModalActive={setModalActive} />
             ) : wind === 'basket'
               ? (
                 <BasketShop />
-              ) : (
-                <p />
-              )}
+              ) : wind === 'avatar'
+                ? (
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
+                ) : wind === 'onemodel'
+                  ? (
+                    <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                  ) : wind === 'editProfile'
+                    ? (
+                      <EditProgile auth={auth} setModalActive={setModalActive} />
+                    ) : (
+                      <p />
+                    )}
       </Modal>
+      )}
       {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
+        <Route path="/findComand" element={<FindComand />} />
       </Routes>
 
     </div>

@@ -42,9 +42,7 @@ export const getModels_THUNK = (userId) => (dispatch) => {
     });
 };
 
-export const filterModels_THUNK = (categ) => (dispatch) => {
-  fetch('http://localhost:3002/api/models')
-    .then((res) => res.json())
-    .then((res) => dispatch(filterModels()));
-};
+
+
+
 

@@ -6,7 +6,9 @@ import { getModels_THUNK } from '../../redux/actions/modelAction';
 
 
 
-export default function UserModels({ el }) {
+export default function UserModels({
+  el, setModelId, setwind, setModalActive,
+}) {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -23,7 +25,14 @@ export default function UserModels({ el }) {
 
   console.log(el.LikeModels, 'el.LikeModels');
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        setModelId(el.id);
+        setwind('onemodel');
+        setModalActive(true);
+      }}
+    >
       <img
         className="model-img"
         src={`http://localhost:3002${el.pic}`}

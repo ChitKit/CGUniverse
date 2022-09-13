@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Profile.css';
+import './ProfileLike.css';
 import { useDispatch, useSelector } from 'react-redux';
 import UserModels from '../UserModels/UserModels';
 import { getModels_THUNK } from '../../redux/actions/modelAction';

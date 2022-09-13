@@ -4,6 +4,7 @@ const { UserModel, LikeModel } = require('../../db/models');
 const route = express.Router();
 
 route.get('/models/:modelId', async (req, res) => {
+  console.log('req');
   const { modelId } = req.params;
   const result = await UserModel.findOne({ where: { id: modelId } });
   res.json(result);
@@ -11,7 +12,7 @@ route.get('/models/:modelId', async (req, res) => {
 
 route.get('/models/farst/10', async (req, res) => {
   const result = await UserModel.findAll({ limit: 10 });
-  res.json(result.pic);
+  res.json(result);
 });
 
 route.get('/models/second/10', async (req, res) => {
@@ -20,11 +21,12 @@ route.get('/models/second/10', async (req, res) => {
   for (let i = 10; i < result.length; i += 1) {
     data.push(result[i]);
   }
-  res.json(result.pic);
+  res.json(data);
 });
 
 route.get('/models', async (req, res) => {
   const { userId } = req.query;
+  // console.log(req.session);
   const result = await UserModel.findAll({
     where: { user_id: req.session.userSession.id }, include: LikeModel,
   });
