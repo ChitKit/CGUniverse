@@ -18,9 +18,11 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       bio: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       role: {
         type: Sequelize.STRING,
