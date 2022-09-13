@@ -19,6 +19,7 @@ import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
+import ModelUploader from './components/ModelUploader/ModelUploader';
 
 
 
@@ -73,9 +74,12 @@ function App() {
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : (
-                      <p />
-                    )}
+                    ) : wind === 'modelUpload'
+                      ? (
+                        <ModelUploader auth={auth} setModalActive={setModalActive} />
+                      ) : (
+                        <p />
+                      )}
       </Modal>
       )}
       {/* <Page /> */}

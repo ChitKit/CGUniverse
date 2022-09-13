@@ -118,9 +118,6 @@ export default function Header({ setModalActive, setwind }) {
         </a>
       </div>
       {/* {search.length && (
-      <Modal>
-        <div>hihihi</div>
-      </Modal>
       )} */}
       <div className="header-container-fourth">
         <a className="header-right-btn" href="#">
@@ -136,7 +133,7 @@ export default function Header({ setModalActive, setwind }) {
               src="shopping-cart-svgrepo-com.svg"
               alt="Cart"
               width="20px"
-              height="20"
+              height="20px"
               type="button"
             />
           </span>
@@ -154,14 +151,7 @@ export default function Header({ setModalActive, setwind }) {
               >
                 <span className="header-right-btn-text"> Войти</span>
               </a>
-              <a
-                className="header-btn header-right-btn2"
-                href="#"
-                onClick={() => {
-                  setwind('reg');
-                  setModalActive(true);
-                }}
-              >
+              <a className="header-btn header-right-btn2" href="#">
                 <span className="header-right-btn-text">Присоединиться </span>
               </a>
             </>
@@ -170,13 +160,23 @@ export default function Header({ setModalActive, setwind }) {
               <Link to="/profile">
                 <img className="header-main-icon" alt="ava" src="/" />
               </Link>
-              <a className="header-btn header-right-btn2 heade-btn-logout" href="#">
+              <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
-              </a>
+              </Link>
             </>
           )}
         <a className="header-btn header-right-btn3" href="#">
-          <span className="header-right-btn-text"> Загрузить</span>
+          <span
+            className="header-right-btn-text"
+            onClick={() => {
+              setwind('modelUpload');
+              setModalActive(true);
+            }}
+          >
+            {' '}
+            Загрузить
+
+          </span>
         </a>
       </div>
     </header>
