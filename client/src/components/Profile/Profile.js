@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,26 +8,14 @@ import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
 import { setAuth } from '../../redux/actions/authActions';
 
-export default function Profile() {
+export default function Profile({ setModalActive, setwind, avatar }) {
   const { auth } = useSelector((state) => state);
   const { like } = useSelector((state) => state);
   const { model } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [img, setImg] = useState(null);
-  const [avatar, setAvatar] = useState(null);
-  console.log(img);
+
 
   // загрузка фото
-  const sendFile = useCallback(() => {
-    const data = new FormData();
-    data.append('avatar', img);
-    axios.post('http://localhost:3002/upload/photoAvatar', data, {
-      headers: {
-        'Content-Type': 'mulpipart/form-data',
-      },
-    })
-      .then((res) => setAvatar(res.data.path));
-  }, [img]);
 
   // добавить в танк из useSelector auth
   useEffect(() => {
@@ -45,13 +32,20 @@ export default function Profile() {
     <div className="profile-general-container">
       <div className="profile-first-container">
         <div className="profile-photo-name-and-btn">
-          {
+          <div
+            className="profile-photo-contener"
+            onClick={() => {
+              setwind('avatar');
+              setModalActive(true);
+            }}
+          >
+            <span className="profile-photo-text">Изменить фотографию</span>
+            {
           avatar
             ? <img className="profile-photo" src={`http://localhost:3002/${avatar}`} alt="пустое фото" />
             : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
           }
-          <input type="file" onChange={(e) => setImg(e.target.files[0])} />
-          <button type="button" onClick={sendFile}>Save</button>
+          </div>
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">

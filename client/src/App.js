@@ -16,12 +16,16 @@ import { setAuth } from './redux/actions/authActions';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import FindComand from './components/FindComand/FindComand';
+import AvatarLoading from './components/AvatarLoading/AvatarLoading';
+
 
 
 
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
+  const [img, setImg] = useState(null);
+  const [avatar, setAvatar] = useState(null);
 
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -46,7 +50,7 @@ function App() {
         active={modalActive}
         setActive={setModalActive}
       >
-        {/* {wind === 'log'
+        {wind === 'log'
           ? (
             <Login />
           ) : wind === 'reg'
@@ -55,16 +59,19 @@ function App() {
             ) : wind === 'basket'
               ? (
                 <BasketShop />
-              ) : (
-                <p />
-              )} */}
+              ) : wind === 'avatar'
+                ? (
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
+                ) : (
+                  <p />
+                )}
       </Modal>
       {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
         <Route path="/findComand" element={<FindComand />} />
       </Routes>
