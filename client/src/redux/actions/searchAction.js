@@ -10,7 +10,6 @@ export const searchModels_THUNK = (text) => (dispatch) => {
         setTimeout(() => dispatch(searchModels(res.filter(
           (el) => el.name.toLowerCase().includes(text.toLowerCase()),
         ))), 300);
-        // dispatch(searchModels(text));
         console.log(text);
       });
   } catch (error) {

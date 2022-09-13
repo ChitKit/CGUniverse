@@ -1,16 +1,43 @@
 const express = require('express');
 const fileMiddleware = require('../../middleware/file');
+const { User } = require('../../db/models');
 
 const router = express.Router();
 
 router.post('/photoAvatar', fileMiddleware.single('avatar'), async (req, res) => {
   try {
     if (req.file) {
+      console.log(req.session);
+      const us = await User.findOne({ where: { id: req.session.userSession.id } });
+      us.avatar = req.file.path;
+      us.save();
       res.json(req.file);
     }
   } catch (error) {
     console.log(error);
   }
 });
+
+// router.patch('/photoAvatar', fileMiddleware.single('avatar'), async (req, res) => {
+//   console.log(req.file);
+//   try {
+//     console.log(req.file);
+//     const { id, avatar } = req.body;
+//     await User.update({ id }, {
+//       where: { id: req.session.userSession.id },
+//     });
+//     const user = await User.findOne({ where: { id: req.session.userSession.id } });
+//     req.session.userSession = {
+//       avatar: req.file.path, id: req.session.userSession.id,
+//     };
+//     // console.log(file);
+//     console.log(user);
+//     res.json(user);
+
+//     res.json(req.file);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 module.exports = router;

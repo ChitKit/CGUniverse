@@ -12,7 +12,6 @@ const apiCategory = require('./routes/api/apiCategory');
 const apiLikes = require('./routes/api/apiLikes');
 const apiMulter = require('./routes/api/apiMulter');
 
-
 const app = express();
 const PORT = process.env.PORT ?? 3002;
 
@@ -47,8 +46,7 @@ app.use('/auth', auth);
 app.use('/api/like', apiModels);
 app.use('/api/category', apiCategory);
 app.use('/apilike', apiLikes);
-app.use('/upload', apiMulter)
-
+app.use('/upload', apiMulter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
