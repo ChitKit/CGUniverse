@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteLike_THUNK, createLike_THUNK, getLike_THUNK } from '../../redux/actions/likeAction';
+import { getModels_THUNK } from '../../redux/actions/modelAction';
+
 
 
 export default function UserModels({ el }) {
-  const [likeOrNot, setLikeOrNot] = useState(false);
   const dispatch = useDispatch();
-  const { model } = useSelector((state) => state);
+  const auth = useSelector((state) => state.auth);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3002/model/like/${el.id}}`)
-  //   dispatch()
-  // }, []);
 
-  // console.log(likesModel, 'likesModel=====');
 
-  const setLikeHandler = (e) => {
-
+  const deleteLikeHandler = (e) => {
+    // e.preventDefault();
+    if (el.flag) {
+      dispatch(deleteLike_THUNK(el.id, auth?.id));
+    } else {
+      dispatch(createLike_THUNK(el.id, auth?.id));
+    }
   };
+
+  console.log(el.LikeModels, 'el.LikeModels');
   return (
     <div className="card">
       <img
         className="model-img"
-        src={`http://localhost:3002/${el.pic}`}
+        src={`http://localhost:3002${el.pic}`}
         alt={el.name}
       />
       <div className="card-footer">
@@ -43,10 +47,21 @@ export default function UserModels({ el }) {
             <img className="icon-img" src="/icons/chat.png" alt="..." />
             <p className="card-footer-text">1000</p>
           </div> */}
-          <div onClick={setLikeHandler} className="icon">
-            <img className="icon-img" src="/icons/star.png" alt="..." />
-            <p className="card-footer-text">1000</p>
-          </div>
+          { (el.flag) ? (
+            <div className="icon">
+              <button type="button" onClick={deleteLikeHandler} className="icon-button">
+                <img className="icon-img" src="/icons/star-yellow.png" alt="..." />
+              </button>
+              <p className="card-footer-text">{el.LikeModels.length}</p>
+            </div>
+          ) : (
+            <div className="icon">
+              <button type="button" onClick={deleteLikeHandler} className="icon-button">
+                <img className="icon-img" src="/icons/star.png" alt="..." />
+              </button>
+              <p className="card-footer-text">{el.LikeModels.length}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

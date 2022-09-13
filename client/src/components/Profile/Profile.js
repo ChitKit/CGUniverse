@@ -9,21 +9,20 @@ import { getLike_THUNK } from '../../redux/actions/likeAction';
 import { setAuth } from '../../redux/actions/authActions';
 
 export default function Profile() {
-  const { auth } = useSelector((state) => state);
-  const { like } = useSelector((state) => state);
-  const { model } = useSelector((state) => state);
+  const auth = useSelector((state) => state.auth);
+  const like = useSelector((state) => state.like);
+  const model = useSelector((state) => state.model);
   const dispatch = useDispatch();
 
-  // добавить в танк из useSelector auth
   useEffect(() => {
-    dispatch(getModels_THUNK());
-  }, []);
+    if (auth) {
+      dispatch(getModels_THUNK(auth?.id));
+      dispatch(getLike_THUNK(auth?.id));
+    }
+  }, [auth]);
 
 
-  // добавить в танк из useSelector auth
-  useEffect(() => {
-    dispatch(getLike_THUNK());
-  }, []);
+
 
   return (
     <div className="profile-general-container">

@@ -66,6 +66,13 @@
 .icon {
   display: flex;
 }
+
+.icon-button{
+  border: none;
+  outline: none;
+  background-color: #fcfcfc;
+}
+
 .comment:hover, .favorite:hover, .card-footer-avatar:hover, .model-img:hover {
   cursor: pointer;
 }

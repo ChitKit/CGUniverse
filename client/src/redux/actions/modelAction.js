@@ -30,7 +30,12 @@ export const editModel_THUNK = (modelId) => (dispatch) => {
 };
 
 export const getModels_THUNK = (userId) => (dispatch) => {
-  fetch(`http://localhost:3002/api/models?userid=${userId || 0}`)
+  fetch(
+    `http://localhost:3002/api/models?userId=${userId}`,
+    {
+      credentials: 'include',
+    },
+  )
     .then((res) => res.json())
     .then((res) => {
       dispatch(getModels(res));

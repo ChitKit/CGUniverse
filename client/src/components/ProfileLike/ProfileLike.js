@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,24 +7,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserModels from '../UserModels/UserModels';
 import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
+import UserLikes from '../UserLikes/UserLikes';
 
 export default function ProfileLike() {
+  const auth = useSelector((state) => state.auth);
+  const like = useSelector((state) => state.like);
+  const model = useSelector((state) => state.model);
   const dispatch = useDispatch();
-  const { model } = useSelector((state) => state);
 
-  // добавить в танк из useSelector auth
   useEffect(() => {
-    dispatch(getModels_THUNK());
-  }, []);
+    if (auth) {
+      dispatch(getModels_THUNK(auth?.id));
+      dispatch(getLike_THUNK(auth?.id));
+    }
+  }, [auth]);
 
-  const { like } = useSelector((state) => state);
-
-  // добавить в танк из useSelector auth
-  useEffect(() => {
-    dispatch(getLike_THUNK());
-  }, []);
-
-  console.log(like, 'like');
 
   return (
     <div className="profile-general-container">
@@ -33,7 +31,7 @@ export default function ProfileLike() {
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">
-                <span className="profile-name-span">Ваше имя</span>
+                <span className="profile-name-span">{auth?.name}</span>
               </a>
             </h1>
             <div className="profile-btn-edit-profile">
@@ -109,7 +107,7 @@ export default function ProfileLike() {
           <div>
             {(like.length !== 0) ? (
               <div className="profile-two-sides-left-results-grid">
-                {like?.map((el) => (<UserModels key={el.id} el={el} />))}
+                {like?.map((el) => (<UserLikes key={el.id} el={el?.UserModel} like={el?.UserModel?.LikeModels} />))}
               </div>
             ) : (
               <span className="profile-two-sides-left-results"> No results </span>
