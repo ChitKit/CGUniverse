@@ -1,0 +1,13 @@
+.uploader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1200px;
+}
+
+.uploadModel,
+.uploadImageModel {
+    border: 5px dotted rgb(35, 150, 0);
+    min-width: 500px;
+    min-height: 500px;
+}
