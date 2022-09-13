@@ -7,15 +7,21 @@ import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
+<<<<<<< HEAD
 
 export default function Header({
   setModalActive, setwind, searchQuery, setSearchQuery,
 }) {
   const { auth } = useSelector((state) => state);
+=======
+export default function Header({ setModalActive, setwind }) {
+  const auth = useSelector((state) => state.auth);
+>>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
@@ -23,6 +29,15 @@ export default function Header({
   };
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    if (auth) {
+      dispatch(searchModels_THUNK(searchQuery));
+    }
+  }, [searchQuery]);
+
+  useEffect(() => {
+>>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
     window.addEventListener('scroll', listenScrollEvent);
     return () => {
       window.removeEventListener('scroll', listenScrollEvent);
@@ -114,9 +129,6 @@ export default function Header({
         </a>
       </div>
       {/* {search.length && (
-      <Modal>
-        <div>hihihi</div>
-      </Modal>
       )} */}
       <div className="header-container-fourth">
         <a className="header-right-btn" href="#">
@@ -132,7 +144,7 @@ export default function Header({
               src="shopping-cart-svgrepo-com.svg"
               alt="Cart"
               width="20px"
-              height="20"
+              height="20px"
               type="button"
             />
           </span>
@@ -150,14 +162,7 @@ export default function Header({
               >
                 <span className="header-right-btn-text"> Войти</span>
               </a>
-              <a
-                className="header-btn header-right-btn2"
-                href="#"
-                onClick={() => {
-                  setwind('reg');
-                  setModalActive(true);
-                }}
-              >
+              <a className="header-btn header-right-btn2" href="#">
                 <span className="header-right-btn-text">Присоединиться </span>
               </a>
             </>
@@ -166,13 +171,23 @@ export default function Header({
               <Link to="/profile">
                 <img className="header-main-icon" alt="ava" src="/" />
               </Link>
-              <a className="header-btn header-right-btn2 heade-btn-logout" href="#">
+              <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
-              </a>
+              </Link>
             </>
           )}
         <a className="header-btn header-right-btn3" href="#">
-          <span className="header-right-btn-text"> Загрузить</span>
+          <span
+            className="header-right-btn-text"
+            onClick={() => {
+              setwind('modelUpload');
+              setModalActive(true);
+            }}
+          >
+            {' '}
+            Загрузить
+
+          </span>
         </a>
       </div>
     </header>

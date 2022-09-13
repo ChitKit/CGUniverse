@@ -20,6 +20,7 @@ import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
 import SearchResult from './components/SearchResult/SearchResult';
+import ModelUploader from './components/ModelUploader/ModelUploader';
 
 
 
@@ -67,16 +68,19 @@ function App() {
                 <BasketShop />
               ) : wind === 'avatar'
                 ? (
-                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
                 ) : wind === 'onemodel'
                   ? (
                     <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : (
-                      <p />
-                    )}
+                    ) : wind === 'modelUpload'
+                      ? (
+                        <ModelUploader auth={auth} setModalActive={setModalActive} />
+                      ) : (
+                        <p />
+                      )}
       </Modal>
       )}
       {/* <Page /> */}
