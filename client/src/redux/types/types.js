@@ -12,7 +12,8 @@ export const DELETE_MODEL = 'DELETE_MODEL';
 export const EDIT_MODEL = 'EDIT_MODEL';
 export const GET_MODEL = 'GET_MODEL';
 export const GET_MODELS = 'GET_MODELS';
-
+export const GET_FMODELS = 'GET_FMODELS';
+export const GET_SMODELS = 'GET_SMODELS';
 // COMMENTS
 
 export const CREATE_COMMENT = 'CREATE_COMMENT';
