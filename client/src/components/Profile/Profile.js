@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
@@ -37,7 +38,16 @@ export default function Profile({ setModalActive, setwind, setModelId }) {
               </a>
             </h1>
             <div className="profile-btn-edit-profile">
-              <a href="#" className="profile-btn-edit-profile-a">EDIT PROFILE</a>
+              <p
+                onClick={() => {
+                  setwind('editProfile');
+                  setModalActive(true);
+                }}
+                className="profile-btn-edit-profile-a"
+              >
+                EDIT PROFILE
+
+              </p>
             </div>
           </div>
         </div>

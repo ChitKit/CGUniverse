@@ -48,8 +48,8 @@ export default function Header({ setModalActive, setwind }) {
     >
       <div className="header-container-first">
         <Link className="header-logo-and-name" to="/">
-          <img className="header-logo" src="/" alt="logo" />
-          CGU30
+          <img className="header-logo" src="/logo512.png" alt="logo" />
+          ComputerGraphicsUniverse
         </Link>
       </div>
       <div className="header-container-second">

@@ -16,6 +16,7 @@ import { setAuth } from './redux/actions/authActions';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
+import EditProgile from './components/EditProgile/EditProgile';
 
 
 
@@ -52,19 +53,22 @@ function App() {
       >
         {wind === 'log'
           ? (
-            <Login />
+            <Login setModalActive={setModalActive} />
           ) : wind === 'reg'
             ? (
-              <Registration />
+              <Registration setModalActive={setModalActive} />
             ) : wind === 'basket'
               ? (
-                <BasketShop />
+                <BasketShop setModalActive={setModalActive} />
               ) : wind === 'onemodel'
                 ? (
-                  <SceneOneModel modelId={modelId} />
-                ) : (
-                  <p />
-                )}
+                  <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                ) : wind === 'editProfile'
+                  ? (
+                    <EditProgile auth={auth} setModalActive={setModalActive} />
+                  ) : (
+                    <p />
+                  )}
 
       </Modal>
       )}
