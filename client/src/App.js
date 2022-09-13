@@ -18,6 +18,7 @@ import Login from './components/Login/Login';
 import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
+import EditProgile from './components/EditProgile/EditProgile';
 
 
 
@@ -56,10 +57,10 @@ function App() {
       >
         {wind === 'log'
           ? (
-            <Login />
+            <Login setModalActive={setModalActive} />
           ) : wind === 'reg'
             ? (
-              <Registration />
+              <Registration setModalActive={setModalActive} />
             ) : wind === 'basket'
               ? (
                 <BasketShop />
@@ -68,10 +69,13 @@ function App() {
                   <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
                 ) : wind === 'onemodel'
                   ? (
-                    <SceneOneModel modelId={modelId} />
-                  ) : (
-                    <p />
-                  )}
+                    <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                  ) : wind === 'editProfile'
+                    ? (
+                      <EditProgile auth={auth} setModalActive={setModalActive} />
+                    ) : (
+                      <p />
+                    )}
       </Modal>
       )}
       {/* <Page /> */}

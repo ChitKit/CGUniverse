@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { setAuth } from '../../redux/actions/authActions';
 import './Registration.css';
 
-export default function Registration() {
+export default function Registration({ setModalActive }) {
   const dispatch = useDispatch();
   const [data, setData] = useState({ role: 'user' });
   const [pass, setPass] = useState(true);
@@ -36,7 +36,7 @@ export default function Registration() {
     if (response.ok) {
       const data2 = await response.json();
       dispatch(setAuth(data2));
-      navigate('/');
+      setModalActive(false);
     }
   };
 
