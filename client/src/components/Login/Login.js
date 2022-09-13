@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../../redux/actions/authActions';
 
-export default function Login() {
+export default function Login({ setModalActive }) {
   const [inputs, setInputs] = useState({ email: '', password: '' });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export default function Login() {
     if (response.ok) {
       const data = await response.json();
       dispatch(setAuth(data));
-      navigate('/');
+      setModalActive(false);
     }
   };
 

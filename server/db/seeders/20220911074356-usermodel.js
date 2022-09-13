@@ -73,8 +73,8 @@ module.exports = {
       },
       {
         name: 'Меч ведьмака',
-        path: '/models/withcer_sword.glb',
-        pic: '/img_models/withcer_sword_pic.png',
+        path: '/models/witcher_sword.glb',
+        pic: '/img_models/witcher_sword_pic.png',
         user_id: 1,
         categ_id: 1,
         price: 100,

@@ -46,6 +46,27 @@ route.post('/login', async (req, res) => {
   }
 });
 
+route.patch('/profileEdit', async (req, res) => {
+  const {
+    name, email,
+  } = req.body;
+  // console.log('SESSSSION', req.session);
+  // console.log(name, email);
+  try {
+    await User.update({ name, email }, {
+      where: { id: req.session.userSession.id },
+    });
+    const user = await User.findOne({ where: { id: req.session.userSession.id } });
+    req.session.userSession = {
+      email: user.email, name: user.name, id: req.session.userSession.id,
+    };
+    console.log(user);
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 route.get('/logout', async (req, res) => {
   res.clearCookie('user_sid'); // Удалить куку
   req.session.destroy(); // Завершить сессию

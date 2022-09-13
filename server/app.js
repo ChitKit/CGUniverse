@@ -10,6 +10,7 @@ const auth = require('./routes/api/apiAuth');
 const apiModels = require('./routes/api/apiModels');
 const apiCategory = require('./routes/api/apiCategory');
 const apiLikes = require('./routes/api/apiLikes');
+const apiMulter = require('./routes/api/apiMulter');
 
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use('/image', express.static(path.join(__dirname, 'image')));
 
 const sessionConfig = {
   name: 'cgu-cookie',
@@ -45,6 +47,7 @@ app.use('/auth', auth);
 app.use('/api/like', apiModels);
 app.use('/api/category', apiCategory);
 app.use('/apilike', apiLikes);
+app.use('/upload', apiMulter)
 
 
 app.listen(PORT, () => {
