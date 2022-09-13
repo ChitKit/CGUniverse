@@ -1,22 +1,17 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
-<<<<<<< HEAD
 
 export default function Header({
   setModalActive, setwind, searchQuery, setSearchQuery,
 }) {
-  const { auth } = useSelector((state) => state);
-=======
-export default function Header({ setModalActive, setwind }) {
   const auth = useSelector((state) => state.auth);
->>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const dispatch = useDispatch();
@@ -29,15 +24,6 @@ export default function Header({ setModalActive, setwind }) {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-=======
-    if (auth) {
-      dispatch(searchModels_THUNK(searchQuery));
-    }
-  }, [searchQuery]);
-
-  useEffect(() => {
->>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
     window.addEventListener('scroll', listenScrollEvent);
     return () => {
       window.removeEventListener('scroll', listenScrollEvent);
