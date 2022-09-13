@@ -12,6 +12,9 @@ export default function Page() {
   const [authSort, setAuthSort] = useState('');
   const filterModel = useSelector((s) => s.filterModel);
   const model = useSelector((s) => s.model);
+  const auth = useSelector((s) => s.auth);
+
+  console.log(auth);
 
   const dispatch = useDispatch();
 
@@ -22,7 +25,9 @@ export default function Page() {
     dispatch(sortModels_THUNK(authSort));
   }, [authSort]);
   useEffect(() => {
-    dispatch(getModels_THUNK());
+    if (auth) {
+      dispatch(getModels_THUNK());
+    }
   }, []);
   console.log(authCategory);
   return (
