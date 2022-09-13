@@ -32,6 +32,11 @@ route.get('/models', async (req, res) => {
   res.json(result);
 });
 
+route.get('/modelForSearch', async (req, res) => {
+  const result = await UserModel.findAll();
+  res.json(result);
+});
+
 route.delete('/model/:id', async (req, res) => {
   const { id } = req.params;
   await UserModel.destroy({ where: { id } });
