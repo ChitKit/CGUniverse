@@ -1,5 +1,5 @@
 const express = require('express');
-const { UserModel } = require('../../db/models');
+const { UserModel, LikeModel } = require('../../db/models');
 
 const route = express.Router();
 
@@ -25,11 +25,18 @@ route.get('/models/second/10', async (req, res) => {
 });
 
 route.get('/models', async (req, res) => {
-  const { userid } = req.query;
+  const { userId } = req.query;
+  // console.log(req.session);
   const result = await UserModel.findAll({
-    where: !+userid ? {} : { user_id: +userid }, limit: 100, attributes: ['id', 'name', 'path', 'pic', 'user_id', 'categ_id', 'price'],
+    where: { user_id: req.session.userSession.id }, include: LikeModel,
   });
-  res.json(result);
+  const new1 = JSON.parse(JSON.stringify(result));
+  const final = (new1.map((el) => {
+    const flag = el.LikeModels.findIndex((element) => +element.user_id === +userId);
+    console.log(flag);
+    return { ...el, flag: flag > -1 };
+  }));
+  res.json(final);
 });
 
 route.delete('/model/:id', async (req, res) => {

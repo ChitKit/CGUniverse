@@ -12,7 +12,8 @@ export default (state = [], action) => {
       return [...state, payload];
 
     case DELETE_LIKE:
-      return state.filter((like) => like.id !== payload);
+      console.log(payload);
+      return state.filter((like) => like.model_id !== payload);
 
     case GET_LIKES:
       return payload;

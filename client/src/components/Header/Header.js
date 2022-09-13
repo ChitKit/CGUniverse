@@ -8,7 +8,7 @@ import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
 export default function Header({ setModalActive, setwind }) {
-  const { auth } = useSelector((state) => state);
+  const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,13 +16,16 @@ export default function Header({ setModalActive, setwind }) {
   const navigate = useNavigate();
   console.log(searchQuery);
 
+
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
   };
 
   useEffect(() => {
-    dispatch(searchModels_THUNK(searchQuery));
+    if (auth) {
+      dispatch(searchModels_THUNK(searchQuery));
+    }
   }, [searchQuery]);
 
   useEffect(() => {
