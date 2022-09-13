@@ -8,7 +8,9 @@ import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
 import { setAuth } from '../../redux/actions/authActions';
 
-export default function Profile({ setModalActive, setwind, avatar }) {
+export default function Profile({
+  setModalActive, setwind, avatar, setModelId,
+}) {
   const { auth } = useSelector((state) => state);
   const { like } = useSelector((state) => state);
   const { model } = useSelector((state) => state);
@@ -125,7 +127,15 @@ export default function Profile({ setModalActive, setwind, avatar }) {
           <div>
             {(model.length !== 0) ? (
               <div className="profile-two-sides-left-results-grid">
-                {model?.map((el) => (<UserModels key={el.id} el={el} />))}
+                {model?.map((el) => (
+                  <UserModels
+                    setModelId={setModelId}
+                    setwind={setwind}
+                    setModalActive={setModalActive}
+                    key={el.id}
+                    el={el}
+                  />
+                ))}
               </div>
             ) : (
               <span className="profile-two-sides-left-results"> No results </span>

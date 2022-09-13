@@ -17,7 +17,7 @@ import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
-
+import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 
 
 
@@ -27,9 +27,11 @@ function App() {
   const [img, setImg] = useState(null);
   const [avatar, setAvatar] = useState(null);
 
+
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
+  const [modelId, setModelId] = useState(1);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -46,6 +48,8 @@ function App() {
       {/* <Routes>
         <Route path="/" element={<Scene />} />
       </Routes> */}
+      {modalActive
+      && (
       <Modal
         active={modalActive}
         setActive={setModalActive}
@@ -62,16 +66,20 @@ function App() {
               ) : wind === 'avatar'
                 ? (
                   <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
-                ) : (
-                  <p />
-                )}
+                ) : wind === 'onemodel'
+                  ? (
+                    <SceneOneModel modelId={modelId} />
+                  ) : (
+                    <p />
+                  )}
       </Modal>
+      )}
       {/* <Page /> */}
       <Header setModalActive={setModalActive} setwind={setwind} />
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
-        <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} />} />
+        <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
         <Route path="/findComand" element={<FindComand />} />
       </Routes>

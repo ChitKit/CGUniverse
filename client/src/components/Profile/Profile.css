@@ -204,9 +204,8 @@
     column-gap: 120px;
     row-gap: 120px;
     grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
- }
+}
 
-  
 
 
 
