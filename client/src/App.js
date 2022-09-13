@@ -19,6 +19,7 @@ import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
+import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
 
 
@@ -28,13 +29,13 @@ function App() {
   const [modalActive, setModalActive] = useState(false);
   const [img, setImg] = useState(null);
   const [avatar, setAvatar] = useState(null);
-
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
-
+  // console.log(searchQuery);
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
       credentials: 'include',
@@ -83,7 +84,19 @@ function App() {
       </Modal>
       )}
       {/* <Page /> */}
-      <Header setModalActive={setModalActive} setwind={setwind} />
+      <Header
+        setModalActive={setModalActive}
+        setwind={setwind}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      {(searchQuery.length !== 0)
+        && (
+        <SearchResult
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+        )}
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />

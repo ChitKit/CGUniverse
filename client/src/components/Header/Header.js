@@ -1,20 +1,26 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
+<<<<<<< HEAD
+
+export default function Header({
+  setModalActive, setwind, searchQuery, setSearchQuery,
+}) {
+  const { auth } = useSelector((state) => state);
+=======
 export default function Header({ setModalActive, setwind }) {
   const auth = useSelector((state) => state.auth);
+>>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
-  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(searchQuery);
 
 
   const listenScrollEvent = () => {
@@ -23,18 +29,20 @@ export default function Header({ setModalActive, setwind }) {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
     if (auth) {
       dispatch(searchModels_THUNK(searchQuery));
     }
   }, [searchQuery]);
 
   useEffect(() => {
+>>>>>>> b029d461ba62ef0ad31705dc37464bc263a7aca0
     window.addEventListener('scroll', listenScrollEvent);
     return () => {
       window.removeEventListener('scroll', listenScrollEvent);
     };
   }, []);
-
   const logOutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('http://localhost:3002/auth/logout', {
@@ -46,6 +54,7 @@ export default function Header({ setModalActive, setwind }) {
       navigate('/');
     }
   };
+  const handlerSubmit = (q) => (setSearchQuery(q.target.value));
 
   return (
     <header
@@ -110,7 +119,7 @@ export default function Header({ setModalActive, setwind }) {
         <a className="header-input-link" href="#">
           <input
             value={searchQuery}
-            onChange={(q) => (setSearchQuery(q.target.value))}
+            onChange={handlerSubmit}
             className="header-form-control"
             type="search"
             placeholder="Search"

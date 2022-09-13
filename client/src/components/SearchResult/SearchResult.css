@@ -1,0 +1,11 @@
+.searchresult-container{
+  position: fixed;
+  top: 80px;
+  z-index: 11111;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(192, 226, 0);
+}
+.searchresult-answers {
+ 
+}
