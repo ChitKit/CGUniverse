@@ -44,8 +44,8 @@ export default function Profile({
           >
             <span className="profile-photo-text">Изменить фотографию</span>
             {
-          avatar
-            ? <img className="profile-photo" src={`http://localhost:3002/${avatar}`} alt="пустое фото" />
+          auth?.avatar
+            ? <img className="profile-photo" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
             : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
           }
           </div>

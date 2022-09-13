@@ -66,7 +66,7 @@ function App() {
                 <BasketShop />
               ) : wind === 'avatar'
                 ? (
-                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} />
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
                 ) : wind === 'onemodel'
                   ? (
                     <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
