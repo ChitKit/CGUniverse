@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { setAuth } from '../../redux/actions/authActions';
 
 export default function EditProgile({ auth, setModalActive }) {
   const [inputsUpdate, setInputsUpdate] = useState(auth);
@@ -10,12 +11,10 @@ export default function EditProgile({ auth, setModalActive }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('effect');
     setInputsUpdate(auth);
   }, []);
 
   const changeHandler = (e) => {
-    console.log(e.target, e.target.name);
     setInputsUpdate((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -24,14 +23,15 @@ export default function EditProgile({ auth, setModalActive }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const respone = await fetch('/api/changeUser', {
+    const respone = await fetch('/auth/profileEdit', {
+      credentials: 'include',
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inputsUpdate),
     });
     if (respone.ok) {
       const data = await respone.json();
-      //   setAuthState(data);
+      dispatch(setAuth(data));
       setModalActive(false);
     }
   };
