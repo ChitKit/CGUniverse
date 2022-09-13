@@ -5,11 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
-import Modal from '../Modal/Modal';
 import './Header.css';
 
 export default function Header({ setModalActive, setwind }) {
-  const { auth, search } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const [searchQuery, setSearchQuery] = useState('');

@@ -2,7 +2,7 @@
   display: block;
   max-width: 410px;
   max-height: 100%;
-  width: calc(33.33333%-31px);
+  width: 100%;
   margin: auto;
   background-color: hsla(0, 0%, 99%, 0.973);
   border-radius: 3px;
