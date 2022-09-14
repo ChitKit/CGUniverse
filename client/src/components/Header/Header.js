@@ -3,19 +3,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { filterModels_THUNK } from '../../redux/actions/actionFIlterSort';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
 
 export default function Header({
-  setModalActive, setwind, searchQuery, setSearchQuery,
+  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch, setAuthCategory,
 }) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [category, setCategory] = useState([]);
 
 
   const listenScrollEvent = () => {
@@ -29,6 +31,12 @@ export default function Header({
       window.removeEventListener('scroll', listenScrollEvent);
     };
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3002/api/category')
+      .then((res) => res.json())
+      .then((res) => setCategory(res));
+  }, []);
   const logOutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('http://localhost:3002/auth/logout', {
@@ -41,7 +49,12 @@ export default function Header({
     }
   };
   const handlerSubmit = (q) => (setSearchQuery(q.target.value));
-
+  const handleClick = (e) => {
+    e.preventDefault();
+    setAuthCategory(e.target.innerText);
+    // dispatch(filterModels_THUNK(e.target.innerText));
+    navigate('/page');
+  };
   return (
     <header
       className="header"
@@ -82,10 +95,17 @@ export default function Header({
               К покупкам
             </NavLink>
             <div className="header-dropdown-menu1">
-              <a className="header-dropdown-item1" href="#">11111 </a>
-              <a className="header-dropdown-item1" href="#">22222 </a>
-              <a className="header-dropdown-item1" href="#">33333 </a>
-              <a className="header-dropdown-item1" href="#">44444 </a>
+              {category.map((categ) => (
+                <a
+                  onClick={handleClick}
+                  className="header-dropdown-item1"
+                  href="#"
+                >
+                  {categ?.name}
+                  {' '}
+                </a>
+              ))}
+
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
@@ -103,7 +123,10 @@ export default function Header({
       </div>
       <div className="header-container-third">
         <a className="header-input-link" href="#">
+          {/* ПОИСК */}
           <input
+            // onBlur={() => { setActiveSearch(false); }}
+            // onFocus={() => setActiveSearch(true)}
             value={searchQuery}
             onChange={handlerSubmit}
             className="header-form-control"
@@ -148,8 +171,22 @@ export default function Header({
               >
                 <span className="header-right-btn-text"> Войти</span>
               </a>
-              <a className="header-btn header-right-btn2" href="#">
-                <span className="header-right-btn-text">Присоединиться </span>
+              <a
+                className="header-btn header-right-btn2"
+                href="#"
+                onClick={() => {
+                  setwind('reg');
+                  setModalActive(true);
+                }}
+              >
+                <span
+                  className="header-right-btn-text"
+
+                >
+                  Присоединиться
+                  {' '}
+
+                </span>
               </a>
             </>
           ) : (
