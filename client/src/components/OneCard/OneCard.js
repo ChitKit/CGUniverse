@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-undef */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
@@ -18,13 +20,11 @@ export default function OneCard({
         src={`http://localhost:3002/${model.pic}`}
         alt="img"
         onClick={() => {
-          {
-            setModelId(model.id);
-            setwind('onemodel');
-            setModalActive(true);
-            dispatch(searchModels_THUNK(model.id));
-            setSearchQuery('');
-          }
+          setModelId(model.id);
+          setwind('onemodel');
+          setModalActive(true);
+          dispatch(searchModels_THUNK(model.id));
+          setSearchQuery('');
         }}
       />
       <div className="card-footer">

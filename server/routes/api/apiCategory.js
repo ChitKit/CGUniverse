@@ -10,8 +10,8 @@ router.get('/', async (req, res) => {
 
 router.get('/allCategory', async (req, res) => {
   const result = await Category.findAll();
-  res.json(result)
-
+  res.json(result);
+});
 router.get('/allModels', async (req, res) => {
   const result = await UserModel.findAll({ include: Category });
   res.json(result);

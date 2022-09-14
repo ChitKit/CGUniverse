@@ -50,7 +50,6 @@ export default function Header({
   const handlerSubmit = (q) => (setSearchQuery(q.target.value));
   const handleClick = (e) => {
     console.log(e.target.innerText);
-    
   };
   return (
     <header

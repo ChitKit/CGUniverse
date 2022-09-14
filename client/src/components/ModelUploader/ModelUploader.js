@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import './ModelUploader.css';
@@ -33,7 +34,9 @@ export default function ModelUploader({ setModalActive }) {
         'Content-Type': 'mulpipart/form-data',
       },
       withCredentials: true,
-    });
+
+    })
+      .then((res) => { setModalActive(false); dispatch(getModels_THUNK()); });
 
     //       .then((res) => setAvatar(res.data.path));
   };
