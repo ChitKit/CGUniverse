@@ -19,6 +19,7 @@ import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
+import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
@@ -33,6 +34,8 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
+  const [activeSearch, setActiveSearch] = useState(true);
+  const [postFlag, setpostFlag] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -69,7 +72,10 @@ function App() {
                   <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
                 ) : wind === 'onemodel'
                   ? (
-                    <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                    <div className="api-convas-container-comment">
+                      <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                      <Comment modelId={modelId} />
+                    </div>
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
@@ -90,9 +96,10 @@ function App() {
         setwind={setwind}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        setActiveSearch={setActiveSearch}
       />
       {
-      (searchQuery.length !== 0)
+      (searchQuery.length !== 0 && activeSearch)
         && (
         <SearchResult
           setwind={setwind}
@@ -100,6 +107,7 @@ function App() {
           setModalActive={setModalActive}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          setActiveSearch={setActiveSearch}
         />
         )
         }

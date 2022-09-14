@@ -9,13 +9,14 @@ import './Header.css';
 
 
 export default function Header({
-  setModalActive, setwind, searchQuery, setSearchQuery,
+  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch,
 }) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [category, setCategory] = useState([]);
 
 
   const listenScrollEvent = () => {
@@ -29,6 +30,12 @@ export default function Header({
       window.removeEventListener('scroll', listenScrollEvent);
     };
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3002/api/category')
+      .then((res) => res.json())
+      .then((res) => setCategory(res));
+  }, []);
   const logOutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('http://localhost:3002/auth/logout', {
@@ -41,7 +48,10 @@ export default function Header({
     }
   };
   const handlerSubmit = (q) => (setSearchQuery(q.target.value));
-
+  const handleClick = (e) => {
+    console.log(e.target.innerText);
+    
+  };
   return (
     <header
       className="header"
@@ -82,10 +92,17 @@ export default function Header({
               К покупкам
             </NavLink>
             <div className="header-dropdown-menu1">
-              <a className="header-dropdown-item1" href="#">11111 </a>
-              <a className="header-dropdown-item1" href="#">22222 </a>
-              <a className="header-dropdown-item1" href="#">33333 </a>
-              <a className="header-dropdown-item1" href="#">44444 </a>
+              {category.map((categ) => (
+                <a
+                  onClick={handleClick}
+                  className="header-dropdown-item1"
+                  href="#"
+                >
+                  {categ?.name}
+                  {' '}
+                </a>
+              ))}
+
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
@@ -104,6 +121,8 @@ export default function Header({
       <div className="header-container-third">
         <a className="header-input-link" href="#">
           <input
+            // onBlur={() => { setActiveSearch(false); }}
+            // onFocus={() => setActiveSearch(true)}
             value={searchQuery}
             onChange={handlerSubmit}
             className="header-form-control"

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/allModels', async (req, res) => {
-  const result = await UserModel.findAll();
+  const result = await UserModel.findAll({ include: Category });
   res.json(result);
 });
 

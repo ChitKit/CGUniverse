@@ -13,7 +13,6 @@ export default function Page({ setwind, setModelId, setModalActive }) {
   // const model = useSelector((s) => s.model);
   const auth = useSelector((s) => s.auth);
 
-  console.log(auth);
 
   const dispatch = useDispatch();
 

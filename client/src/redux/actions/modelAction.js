@@ -31,7 +31,7 @@ export const editModel_THUNK = (modelId) => (dispatch) => {
 
 export const getModels_THUNK = (userId) => (dispatch) => {
   fetch(
-    `http://localhost:3002/api/models?userId=${userId}`,
+    `http://localhost:3002/api/models?;userId=${userId}`,
     {
       credentials: 'include',
     },
