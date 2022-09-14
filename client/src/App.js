@@ -19,6 +19,7 @@ import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
+import AddPost from './components/FindComand/AddPost';
 
 
 
@@ -33,6 +34,7 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
+  const [postFlag, setpostFlag] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -73,9 +75,12 @@ function App() {
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : (
-                      <p />
-                    )}
+                    ) : wind === 'addPost'
+                      ? (
+                        <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
+                      ) : (
+                        <p />
+                      )}
       </Modal>
       )}
       {/* <Page /> */}
@@ -85,7 +90,7 @@ function App() {
         <Route path="/page" element={<Page />} />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
-        <Route path="/findComand" element={<FindComand />} />
+        <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
       </Routes>
 
     </div>

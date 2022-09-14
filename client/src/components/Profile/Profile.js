@@ -1,17 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import UserModels from '../UserModels/UserModels';
 import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
-import { setAuth } from '../../redux/actions/authActions';
 
 
 export default function Profile({
-  setModalActive, setwind, avatar, setModelId,
+  setModalActive, setwind, setModelId,
 }) {
   const auth = useSelector((state) => state.auth);
   const like = useSelector((state) => state.like);
@@ -45,7 +44,7 @@ export default function Profile({
           >
             <span className="profile-photo-text">Изменить фотографию</span>
             {
-          auth?.avatar
+          (auth?.avatar !== null)
             ? <img className="profile-photo" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
             : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
           }

@@ -14,6 +14,14 @@ a.header-dropdown-item {
   display: block;
 }
 
+.header-main-icon {
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+}
+
 header {
   padding: 0px 50px;
   position: sticky;

@@ -14,7 +14,6 @@ export default function Header({ setModalActive, setwind }) {
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(searchQuery);
 
 
   const listenScrollEvent = () => {
@@ -170,7 +169,11 @@ export default function Header({ setModalActive, setwind }) {
           ) : (
             <>
               <Link to="/profile">
-                <img className="header-main-icon" alt="ava" src="/" />
+                {
+          (auth?.avatar !== null)
+            ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
+          }
               </Link>
               <a className="header-btn header-right-btn2 heade-btn-logout" href="#">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
