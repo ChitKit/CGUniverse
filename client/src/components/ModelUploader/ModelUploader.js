@@ -9,6 +9,7 @@ export default function ModelUploader({ setModalActive }) {
   const [inputs, setInputs] = useState({
     name: '', categ_id: '',
   });
+  console.log(inputs);
   const dispatch = useDispatch();
   const [files, setFiles] = useState([]);
   const category = useSelector((state) => state.category);
@@ -20,7 +21,6 @@ export default function ModelUploader({ setModalActive }) {
   const submitModelHandler = useCallback(async (e) => {
     e.preventDefault();
     const data = new FormData();
-    console.log(inputs);
 
     data.append('model', files[0]);
     data.append('pic', files[1]);
@@ -55,7 +55,7 @@ export default function ModelUploader({ setModalActive }) {
           value={inputs.categ_id}
 
         >
-          <option>Выберите категорию</option>
+          <option hidden>Выберите категорию</option>
           {category?.map((el) => <option key={el.id} value={el.id}>{el.name}</option>)}
         </select>
         <button type="submit">Загрузить</button>

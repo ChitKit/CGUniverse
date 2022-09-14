@@ -20,10 +20,13 @@ app.use(cors({
   credentials: true,
 }));
 
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use(express.static(path.join('public')));
+app.use(express.static(path.join('public2')));
 app.use('/image', express.static(path.join(__dirname, 'image')));
 
 const sessionConfig = {
