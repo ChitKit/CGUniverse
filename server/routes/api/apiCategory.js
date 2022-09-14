@@ -8,4 +8,9 @@ router.get('/', async (req, res) => {
   res.json(result);
 });
 
+router.get('/allCategory', async (req, res) => {
+  const result = await Category.findAll();
+  res.json(result);
+});
+
 module.exports = router;
