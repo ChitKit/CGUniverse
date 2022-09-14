@@ -32,6 +32,7 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
+  const [activeSearch, setActiveSearch] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -86,9 +87,10 @@ function App() {
         setwind={setwind}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        setActiveSearch={setActiveSearch}
       />
       {
-      (searchQuery.length !== 0)
+      (searchQuery.length !== 0 && activeSearch)
         && (
         <SearchResult
           setwind={setwind}
@@ -96,6 +98,7 @@ function App() {
           setModalActive={setModalActive}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          setActiveSearch={setActiveSearch}
         />
         )
         }

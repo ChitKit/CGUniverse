@@ -69,6 +69,9 @@ header {
   background-color: white;
 }
 
+
+
+
 .header-navigation-item-dropdown1:hover .header-dropdown-menu1 {
   display: block;
   display: flex;
@@ -81,13 +84,16 @@ header {
   padding: 10px;
   text-decoration: none;
   /* border-top: solid 1px #e0e0e0; */
-  height: 20px;
-
+  min-height: 20px;
+  width: 100%;
+  text-align: left;
+  color: #323b40;
+  
 }
 
 .header-dropdown-menu1 a:hover {
   background: #f0f0f0;
-  color: #323b40;
+  color: #1caad9;
 }
 
 .header-dropdown-item1 {

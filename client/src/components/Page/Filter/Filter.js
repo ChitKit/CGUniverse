@@ -8,7 +8,7 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
   const [category, setCategory] = useState([]); // array category
   const [categoryName, setCategoryName] = useState(''); // categorye`s name
   const [sortName, setSortName] = useState(''); // sort`s name
-  
+
   useEffect(() => {
     fetch('http://localhost:3002/api/category')
       .then((res) => res.json())
@@ -27,7 +27,10 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
     <div className="filter-container">
       <div className="filter-content-header">
         <div className="filters">
-          <div className="filters-filter" onClick={() => setFilter((prev) => !prev)}>
+          <div
+            className="filters-filter"
+            onClick={() => setFilter((prev) => !prev)}
+          >
             <div className="filter-category">
               <span className="filter-header">Категории</span>
               <span className="filter-drop-down">
@@ -46,7 +49,13 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
               <div className={filter ? 'filter-dd-menu' : 'filter-dd-none'}>
                 {/* выпадающий список */}
                 <ul className="filter-ul">
-                  <li className="filter-dd-el" onClick={handlerClick}>Все категории</li>
+                  <li
+                    className="filter-dd-el"
+                    onClick={handlerClick}
+                  >
+                    Все категории
+
+                  </li>
                   {category.map((el) => (
                     <li className="filter-dd-el" onClick={handlerClick}>{el.name}</li>
                   ))}
