@@ -8,4 +8,9 @@ router.get('/', async (req, res) => {
   res.json(result);
 });
 
+router.get('/allModels', async (req, res) => {
+  const result = await UserModel.findAll();
+  res.json(result);
+});
+
 module.exports = router;

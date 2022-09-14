@@ -25,18 +25,24 @@ route.get('/models/second/10', async (req, res) => {
 });
 
 route.get('/models', async (req, res) => {
-  const { userId } = req.query;
+  const userId = req.session.userSession.id;
   // console.log(req.session);
   const result = await UserModel.findAll({
     where: { user_id: req.session.userSession.id }, include: LikeModel,
   });
+
   const new1 = JSON.parse(JSON.stringify(result));
   const final = (new1.map((el) => {
     const flag = el.LikeModels.findIndex((element) => +element.user_id === +userId);
-    console.log(flag);
+    // console.log(flag);
     return { ...el, flag: flag > -1 };
   }));
   res.json(final);
+});
+
+route.get('/modelForSearch', async (req, res) => {
+  const result = await UserModel.findAll();
+  res.json(result);
 });
 
 route.delete('/model/:id', async (req, res) => {

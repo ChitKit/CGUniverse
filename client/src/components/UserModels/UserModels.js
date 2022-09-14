@@ -23,7 +23,7 @@ export default function UserModels({
     }
   };
 
-  console.log(el.LikeModels, 'el.LikeModels');
+  // console.log(el.LikeModels, 'el.LikeModels');
   return (
     <div
       className="card"
