@@ -34,6 +34,7 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
+  const [activeSearch, setActiveSearch] = useState(true);
   const [postFlag, setpostFlag] = useState(true);
 
   useEffect(() => {
@@ -95,9 +96,10 @@ function App() {
         setwind={setwind}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        setActiveSearch={setActiveSearch}
       />
       {
-      (searchQuery.length !== 0)
+      (searchQuery.length !== 0 && activeSearch)
         && (
         <SearchResult
           setwind={setwind}
@@ -105,6 +107,7 @@ function App() {
           setModalActive={setModalActive}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          setActiveSearch={setActiveSearch}
         />
         )
         }
