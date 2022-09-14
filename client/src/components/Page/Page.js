@@ -24,13 +24,6 @@ export default function Page() {
       dispatch(filterAllModels_THUNK());
     }
   }, [authCategory]);
-  // useEffect(() => {
-  //   dispatch(sortModels_THUNK(authSort));
-  // }, [authSort]);
-  // useEffect(() => {
-  //   dispatch(filterAllModels_THUNK());
-  // }, []);
-  console.log(filterModel);
   return (
     <div className="container">
       <Filter setAuthCategory={setAuthCategory} setAuthSort={setAuthSort} />

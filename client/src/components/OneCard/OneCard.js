@@ -9,6 +9,7 @@ export default function OneCard({ model }) {
         className="model-img"
         src={`http://localhost:3002/${model.pic}`}
         alt="img"
+        onClick={() => console.log('hello')}
       />
       <div className="card-footer">
         <div className="card-footer-left" onClick={() => (console.log('author`s profile'))}>

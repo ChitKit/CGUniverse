@@ -22,9 +22,6 @@ import EditProgile from './components/EditProgile/EditProgile';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
 
-
-
-
 function App() {
   const [modalActive, setModalActive] = useState(false);
   const [img, setImg] = useState(null);
@@ -35,7 +32,7 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
-  // console.log(searchQuery);
+
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
       credentials: 'include',
@@ -90,13 +87,18 @@ function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-      {(searchQuery.length !== 0)
+      {
+      (searchQuery.length !== 0)
         && (
         <SearchResult
+          setwind={setwind}
+          setModelId={setModelId}
+          setModalActive={setModalActive}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        )}
+        )
+        }
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/page" element={<Page />} />
