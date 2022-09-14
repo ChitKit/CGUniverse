@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { filterModels_THUNK } from '../../redux/actions/actionFIlterSort';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
 
 export default function Header({
-  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch,
+  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch, setAuthCategory,
 }) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
@@ -49,7 +50,10 @@ export default function Header({
   };
   const handlerSubmit = (q) => (setSearchQuery(q.target.value));
   const handleClick = (e) => {
-    console.log(e.target.innerText);
+    e.preventDefault();
+    setAuthCategory(e.target.innerText);
+    // dispatch(filterModels_THUNK(e.target.innerText));
+    navigate('/page');
   };
   return (
     <header
@@ -119,6 +123,7 @@ export default function Header({
       </div>
       <div className="header-container-third">
         <a className="header-input-link" href="#">
+          {/* ПОИСК */}
           <input
             // onBlur={() => { setActiveSearch(false); }}
             // onFocus={() => setActiveSearch(true)}

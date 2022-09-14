@@ -1,3 +1,4 @@
+
 import { GET_CATEGORY } from '../types/types';
 
 export default (state = null, action) => {
@@ -6,12 +7,8 @@ export default (state = null, action) => {
   switch (type) {
     case GET_CATEGORY:
       return payload;
-
     default:
       return state;
   }
 };
-
-
-
 

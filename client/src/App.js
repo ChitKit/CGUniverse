@@ -36,6 +36,7 @@ function App() {
   const [modelId, setModelId] = useState(1);
   const [activeSearch, setActiveSearch] = useState(true);
   const [postFlag, setpostFlag] = useState(true);
+  const [authCategory, setAuthCategory] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -97,6 +98,7 @@ function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setActiveSearch={setActiveSearch}
+        setAuthCategory={setAuthCategory}
       />
       {
       (searchQuery.length !== 0 && activeSearch)
@@ -113,7 +115,18 @@ function App() {
         }
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
-        <Route path="/page" element={<Page setwind={setwind} setModelId={setModelId} setModalActive={setModalActive} />} />
+        <Route
+          path="/page"
+          element={(
+            <Page
+              setwind={setwind}
+              setModelId={setModelId}
+              setModalActive={setModalActive}
+              setAuthCategory={setAuthCategory}
+              authCategory={authCategory}
+            />
+)}
+        />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
