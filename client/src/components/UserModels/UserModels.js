@@ -23,21 +23,24 @@ export default function UserModels({
     }
   };
 
-  console.log(el.LikeModels, 'el.LikeModels');
+  // console.log(el.LikeModels, 'el.LikeModels');
   return (
     <div
       className="card"
-      onClick={() => {
+    >
+      <div onClick={() => {
         setModelId(el.id);
         setwind('onemodel');
         setModalActive(true);
       }}
-    >
-      <img
-        className="model-img"
-        src={`http://localhost:3002${el.pic}`}
-        alt={el.name}
-      />
+      >
+        {' '}
+        <img
+          className="model-img"
+          src={`http://localhost:3002${el.pic}`}
+          alt={el.name}
+        />
+      </div>
       <div className="card-footer">
         <div className="card-footer-left">
           {/* <img

@@ -2,19 +2,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
-export default function Header({ setModalActive, setwind }) {
+
+export default function Header({
+  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch,
+}) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
-  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(searchQuery);
+  const [category, setCategory] = useState([]);
 
 
   const listenScrollEvent = () => {
@@ -23,18 +25,17 @@ export default function Header({ setModalActive, setwind }) {
   };
 
   useEffect(() => {
-    if (auth) {
-      dispatch(searchModels_THUNK(searchQuery));
-    }
-  }, [searchQuery]);
-
-  useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
     return () => {
       window.removeEventListener('scroll', listenScrollEvent);
     };
   }, []);
 
+  useEffect(() => {
+    fetch('http://localhost:3002/api/category')
+      .then((res) => res.json())
+      .then((res) => setCategory(res));
+  }, []);
   const logOutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('http://localhost:3002/auth/logout', {
@@ -46,7 +47,11 @@ export default function Header({ setModalActive, setwind }) {
       navigate('/');
     }
   };
-
+  const handlerSubmit = (q) => (setSearchQuery(q.target.value));
+  const handleClick = (e) => {
+    console.log(e.target.innerText);
+    
+  };
   return (
     <header
       className="header"
@@ -83,14 +88,21 @@ export default function Header({ setModalActive, setwind }) {
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
-            <a className="header-navigation-link-dropdown-toggle1" href="#">
+            <NavLink className="header-navigation-link-dropdown-toggle1" to="/page">
               К покупкам
-            </a>
+            </NavLink>
             <div className="header-dropdown-menu1">
-              <a className="header-dropdown-item1" href="#">11111 </a>
-              <a className="header-dropdown-item1" href="#">22222 </a>
-              <a className="header-dropdown-item1" href="#">33333 </a>
-              <a className="header-dropdown-item1" href="#">44444 </a>
+              {category.map((categ) => (
+                <a
+                  onClick={handleClick}
+                  className="header-dropdown-item1"
+                  href="#"
+                >
+                  {categ?.name}
+                  {' '}
+                </a>
+              ))}
+
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
@@ -109,8 +121,10 @@ export default function Header({ setModalActive, setwind }) {
       <div className="header-container-third">
         <a className="header-input-link" href="#">
           <input
+            // onBlur={() => { setActiveSearch(false); }}
+            // onFocus={() => setActiveSearch(true)}
             value={searchQuery}
-            onChange={(q) => (setSearchQuery(q.target.value))}
+            onChange={handlerSubmit}
             className="header-form-control"
             type="search"
             placeholder="Search"
@@ -174,7 +188,11 @@ export default function Header({ setModalActive, setwind }) {
           ) : (
             <>
               <Link to="/profile">
-                <img className="header-main-icon" alt="ava" src="/" />
+                {
+          (auth?.avatar !== null)
+            ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
+          }
               </Link>
               <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
