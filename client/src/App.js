@@ -101,7 +101,7 @@ function App() {
         }
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
-        <Route path="/page" element={<Page />} />
+        <Route path="/page" element={<Page setwind={setwind} setModelId={setModelId} setModalActive={setModalActive} />} />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
         <Route path="/findComand" element={<FindComand />} />
