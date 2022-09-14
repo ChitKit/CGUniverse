@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Finder.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     user_id: DataTypes.INTEGER,
     images: DataTypes.STRING,
   }, {

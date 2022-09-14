@@ -17,6 +17,7 @@ export default function Header({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
@@ -154,7 +155,11 @@ export default function Header({
           ) : (
             <>
               <Link to="/profile">
-                <img className="header-main-icon" alt="ava" src="/" />
+                {
+          (auth?.avatar !== null)
+            ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
+          }
               </Link>
               <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
