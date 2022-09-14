@@ -28,10 +28,10 @@ export const createLike_THUNK = (id) => (dispatch) => {
     .then((res) => {
       dispatch(createLike(res));
     })
-    .then((res) => {
+    .then(() => {
       dispatch(getModels_THUNK());
     })
-    .then((res) => {
+    .then(() => {
       dispatch(getLike_THUNK());
     });
 };

@@ -19,6 +19,7 @@ import FindComand from './components/FindComand/FindComand';
 import AvatarLoading from './components/AvatarLoading/AvatarLoading';
 import SceneOneModel from './components/SceneOneModel/SceneOneModel';
 import EditProgile from './components/EditProgile/EditProgile';
+import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
@@ -70,7 +71,10 @@ function App() {
                   <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
                 ) : wind === 'onemodel'
                   ? (
-                    <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                    <div className="api-convas-container-comment">
+                      <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                      <Comment modelId={modelId} />
+                    </div>
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
