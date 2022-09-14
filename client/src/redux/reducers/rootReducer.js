@@ -9,6 +9,7 @@ import filterSortReducer from './filterSortReducer';
 import sortReducer from './sortReducer';
 import oneModelReducer from './oneModelReducer';
 import searchReducer from './searchReducer';
+import postReducer from './postReducer';
 
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   filterModel: filterSortReducer,
   sort: sortReducer,
   search: searchReducer,
+  posts: postReducer,
 });
 
 export default rootReducer;

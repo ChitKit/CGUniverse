@@ -6,6 +6,18 @@
 
 }
 
+.FindComand-noPost {
+    padding-top: 13%;
+}
+
+.FindComand-del {
+    width: 80px;
+    height: 50px;
+    position: relative;
+    right: -48%;
+    bottom: -29%;
+}
+
 .FindComand-section {
     height: 100%;
     width: 80%;

@@ -33,7 +33,6 @@ function App() {
   const dispatch = useDispatch();
   const [wind, setwind] = useState('');
   const [modelId, setModelId] = useState(1);
-  const [postFlag, setpostFlag] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -79,7 +78,7 @@ function App() {
                         <ModelUploader auth={auth} setModalActive={setModalActive} />
                       ) : wind === 'addPost'
                         ? (
-                          <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
+                          <AddPost />
                         ) : (
                           <p />
                         )}
@@ -109,7 +108,7 @@ function App() {
         <Route path="/page" element={<Page setwind={setwind} setModelId={setModelId} setModalActive={setModalActive} />} />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
-        <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
+        <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} />} />
       </Routes>
 
     </div>

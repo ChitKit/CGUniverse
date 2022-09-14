@@ -1,14 +1,18 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deletePost_THUNK, getPosts_THUNK } from '../../redux/actions/postsAction';
 import './FindComand.css';
 
-export default function FindComand({ setModalActive, setwind, postFlag }) {
-  const [post, setpost] = useState([]);
+export default function FindComand({ setModalActive, setwind }) {
+  const { auth } = useSelector((state) => state);
+  const { posts } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
-    fetch('http://localhost:3002/api/posts')
-      .then((res) => res.json())
-      .then((result) => setpost(result));
-  }, [postFlag]);
+    dispatch(getPosts_THUNK());
+  }, []);
 
   return (
     <div className="FindComand-body">
@@ -28,16 +32,34 @@ export default function FindComand({ setModalActive, setwind, postFlag }) {
           </button>
         </div>
         <main className="FindComand-container-form">
-          {post.length === 0
+          {posts.length === 0
             ? (
-              <h1>Постав пока нет. Вы можете добавить объявления</h1>
+              <h1 className="FindComand-noPost">Постов пока нет. Вы можете добавить объявлениe</h1>
             ) : (
-              post.map((el) => (
-                <div className="FindComand-post">
+              posts.map((el) => (
+                <div
+                  className="FindComand-post"
+                >
                   <img className="FindComand-image" src="/noPhoto.jpeg" alt="" />
                   <div className="FindComand-text-container">
                     <h1 className="FindComand-post-title">{el.title}</h1>
                     <p className="FindComand-post-description">{el.description}</p>
+                    {
+                      (el.user_id === auth.id) ? (
+                        <img
+                          className="FindComand-del"
+                          src="/del.png"
+                          alt="del"
+                          onClick={() => {
+                            if (el.user_id === auth.id) {
+                              dispatch(deletePost_THUNK(el.id));
+                            }
+                          }}
+                        />
+                      ) : (null)
+
+                  }
+
                   </div>
                   <button type="button" className="FindComand-btn">Откликнуться</button>
                 </div>
