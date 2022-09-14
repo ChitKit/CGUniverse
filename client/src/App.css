@@ -34,3 +34,8 @@
       var(--scrollbarThumbColorSecond) 90%
     );
   }
+
+  .api-convas-container-comment{
+    display: flex;
+    justify-content: space-around;
+  }

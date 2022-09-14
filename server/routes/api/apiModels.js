@@ -1,5 +1,5 @@
 const express = require('express');
-const { UserModel, LikeModel } = require('../../db/models');
+const { UserModel, LikeModel, Finder } = require('../../db/models');
 
 const route = express.Router();
 
@@ -25,15 +25,16 @@ route.get('/models/second/10', async (req, res) => {
 });
 
 route.get('/models', async (req, res) => {
-  const { userId } = req.query;
+  const userId = req.session.userSession.id;
   // console.log(req.session);
   const result = await UserModel.findAll({
     where: { user_id: req.session.userSession.id }, include: LikeModel,
   });
+
   const new1 = JSON.parse(JSON.stringify(result));
   const final = (new1.map((el) => {
     const flag = el.LikeModels.findIndex((element) => +element.user_id === +userId);
-    console.log(flag);
+    // console.log(flag);
     return { ...el, flag: flag > -1 };
   }));
   res.json(final);
@@ -56,6 +57,18 @@ route.post('/model/upload', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+route.post('/posts', async (req, res) => {
+  console.log(req.body);
+  const { title, description } = req.body;
+  const newPost = await Finder.create({ title, description, user_id: req.session.userSession.id });
+  res.json(newPost);
+});
+
+route.get('/posts', async (req, res) => {
+  const newPost = await Finder.findAll();
+  res.json(newPost);
 });
 
 module.exports = route;

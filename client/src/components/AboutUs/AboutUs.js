@@ -63,7 +63,7 @@ export default function AboutUs({ setModalActive, setwind }) {
           <div className="AboutUs-container-title">
             <h1 className="AboutUs-card-title">Объединяйтесь и создавайте 3D модели вместе</h1>
           </div>
-          <button className=" btn AboutUs-card-btn"><Link to="/page" className="header-model-btn-text"><h3 className="header-model-btn-text">НАЙТИ КОМАНДУ</h3></Link></button>
+          <button className=" btn AboutUs-card-btn"><Link to="/findComand" className="header-model-btn-text"><h3 className="header-model-btn-text">НАЙТИ КОМАНДУ</h3></Link></button>
         </div>
       </div>
     </div>

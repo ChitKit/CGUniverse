@@ -5,8 +5,6 @@ const route = express.Router();
 
 route.post('/like/:id', async (req, res) => {
   const { id } = req.params;
-  console.log('===========================', id);
-  console.log(req.session.userSession.id);
   await LikeModel.create({ model_id: id, user_id: req.session.userSession.id });
   const created = await LikeModel.findOne({ where: { model_id: id, user_id: req.session.userSession.id } });
   console.log(created, 'CREATED');

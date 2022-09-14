@@ -7,7 +7,7 @@ export const getComments = (data) => ({ type: GET_COMMENTS, payload: data });
 
 export const deleteComment_THUNK = (id) => (dispatch) => {
   fetch(
-    `http://localhost:3002/comment/${id}`,
+    `http://localhost:3002/api/comment/${id}`,
     {
       method: 'delete',
     },
@@ -18,10 +18,27 @@ export const deleteComment_THUNK = (id) => (dispatch) => {
   });
 };
 
-export const getPosts_THUNK = (modelId) => (dispatch) => {
-  fetch(`http://localhost:3002/comments?modelId=${modelId || 0}`)
+export const getComment_THUNK = (modelId) => (dispatch) => {
+  console.log(modelId, 'getComment_THUNK');
+  fetch(`http://localhost:3002/api/comment/?modelId=${modelId}`)
     .then((res) => res.json())
     .then((res) => {
       dispatch(getComments(res));
+    });
+};
+
+export const createComment_THUNK = (obj, id) => (dispatch) => {
+  fetch(
+    `http://localhost:3002/api/comment/${id}`,
+    {
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(obj),
+    },
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      dispatch(createComment(res));
     });
 };
