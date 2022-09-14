@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
@@ -17,8 +17,6 @@ export default function Header({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const filterModels = useSelector((s) => s.filterModels);
-  
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
@@ -79,9 +77,9 @@ export default function Header({
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
-            <a className="header-navigation-link-dropdown-toggle1" href="#">
+            <NavLink className="header-navigation-link-dropdown-toggle1" to="/page">
               К покупкам
-            </a>
+            </NavLink>
             <div className="header-dropdown-menu1">
               <a className="header-dropdown-item1" href="#">11111 </a>
               <a className="header-dropdown-item1" href="#">22222 </a>
