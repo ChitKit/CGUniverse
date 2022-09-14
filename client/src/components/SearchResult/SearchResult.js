@@ -19,6 +19,7 @@ export default function SearchResult({
       dispatch(searchModels_THUNK(searchQuery));
     }, 400);
   }, [searchQuery]);
+
   return (
     <div className="searchresult-container">
       <ul className="searchresult-answers">
@@ -31,7 +32,6 @@ export default function SearchResult({
               setModalActive(true);
               dispatch(searchModels_THUNK(el.id));
               setSearchQuery('');
-              
             }}
           >
             <div className="searchresult-answer-text">{el.name}</div>
