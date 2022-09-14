@@ -22,7 +22,7 @@ export default function Page({
     if (authCategory !== 'Все категории') {
       dispatch(filterModels_THUNK(authCategory));
     } else if (authCategory === 'Все категории') {
-      dispatch(filterAllModels_THUNK());
+      dispatch(filterModels_THUNK('allModels'));
     }
   }, [authCategory]);
   return (
@@ -34,7 +34,7 @@ export default function Page({
         </div>
         <div className="modules-page">
           {(authCategory === 'Все категории' && Array.isArray(filterModel))
-            ? (filterModel?.map((el) => (
+            ? (filterModel.UserModels?.map((el) => (
               <OneCard
                 model={el}
                 key={el.id}
