@@ -2,7 +2,22 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 1200px;
+}
+
+.uploader form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    flex-direction: column;
+}
+
+.uploader input,
+.uploader label,
+.uploader button {
+    margin: 7px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 7px gray;
 }
 
 .uploadModel,
@@ -10,4 +25,8 @@
     border: 5px dotted rgb(35, 150, 0);
     min-width: 500px;
     min-height: 500px;
+}
+
+.file {
+    align-items: center;
 }

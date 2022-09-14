@@ -36,3 +36,4 @@ export const GET_CATEGORY = 'GET_CATEGORY';
 
 // SEARCH
 export const SEARCH_MODELS = 'SEARCH_MODELS';
+

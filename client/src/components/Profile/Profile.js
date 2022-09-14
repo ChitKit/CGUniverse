@@ -16,7 +16,7 @@ export default function Profile({
   const like = useSelector((state) => state.like);
   const model = useSelector((state) => state.model);
   const dispatch = useDispatch();
-
+  console.log(model);
 
   // загрузка фото
 
