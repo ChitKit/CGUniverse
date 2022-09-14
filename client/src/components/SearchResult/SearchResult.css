@@ -10,3 +10,7 @@
 .searchresult-answers {
  
 }
+.searchresult-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+}

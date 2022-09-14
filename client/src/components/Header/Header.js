@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
@@ -78,9 +78,9 @@ export default function Header({
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
-            <a className="header-navigation-link-dropdown-toggle1" href="#">
+            <NavLink className="header-navigation-link-dropdown-toggle1" to="/page">
               К покупкам
-            </a>
+            </NavLink>
             <div className="header-dropdown-menu1">
               <a className="header-dropdown-item1" href="#">11111 </a>
               <a className="header-dropdown-item1" href="#">22222 </a>
@@ -155,7 +155,11 @@ export default function Header({
           ) : (
             <>
               <Link to="/profile">
-                <img className="header-main-icon" alt="ava" src="/" />
+                {
+          (auth?.avatar !== null)
+            ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
+          }
               </Link>
               <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>

@@ -8,7 +8,7 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
   const [category, setCategory] = useState([]); // array category
   const [categoryName, setCategoryName] = useState(''); // categorye`s name
   const [sortName, setSortName] = useState(''); // sort`s name
-
+  
   useEffect(() => {
     fetch('http://localhost:3002/api/category')
       .then((res) => res.json())

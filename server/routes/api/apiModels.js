@@ -1,5 +1,5 @@
 const express = require('express');
-const { UserModel, LikeModel } = require('../../db/models');
+const { UserModel, LikeModel, Finder } = require('../../db/models');
 
 const route = express.Router();
 
@@ -57,6 +57,18 @@ route.post('/model/upload', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+route.post('/posts', async (req, res) => {
+  console.log(req.body);
+  const { title, description } = req.body;
+  const newPost = await Finder.create({ title, description, user_id: req.session.userSession.id });
+  res.json(newPost);
+});
+
+route.get('/posts', async (req, res) => {
+  const newPost = await Finder.findAll();
+  res.json(newPost);
 });
 
 module.exports = route;

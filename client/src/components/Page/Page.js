@@ -6,7 +6,7 @@ import OneCard from '../OneCard/OneCard';
 import Filter from './Filter/Filter';
 import './Page.css';
 
-export default function Page() {
+export default function Page({ setwind, setModelId, setModalActive }) {
   const [authCategory, setAuthCategory] = useState('Все категории');
   const [authSort, setAuthSort] = useState('');
   const filterModel = useSelector((s) => s.filterModel);
@@ -24,13 +24,6 @@ export default function Page() {
       dispatch(filterAllModels_THUNK());
     }
   }, [authCategory]);
-  // useEffect(() => {
-  //   dispatch(sortModels_THUNK(authSort));
-  // }, [authSort]);
-  // useEffect(() => {
-  //   dispatch(filterAllModels_THUNK());
-  // }, []);
-  console.log(filterModel);
   return (
     <div className="container">
       <Filter setAuthCategory={setAuthCategory} setAuthSort={setAuthSort} />
@@ -40,10 +33,26 @@ export default function Page() {
         </div>
         <div className="modules-page">
           {(authCategory === 'Все категории')
-            ? (filterModel.map((el) => (<OneCard model={el} key={el.id} />)))
+            ? (filterModel.map((el) => (
+              <OneCard
+                model={el}
+                key={el.id}
+                setwind={setwind}
+                setModelId={setModelId}
+                setModalActive={setModalActive}
+              />
+            )))
             : (filterModel[0]?.UserModels?.length > 0
               ? (filterModel.map((el) => el.UserModels
-                .map((a) => (<OneCard model={a} key={a.id} />))))
+                .map((a) => (
+                  <OneCard
+                    model={a}
+                    key={a.id}
+                    setwind={setwind}
+                    setModelId={setModelId}
+                    setModalActive={setModalActive}
+                  />
+                ))))
               : (<h1>В данной категории нет моделей</h1>))}
         </div>
       </main>
