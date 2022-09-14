@@ -36,7 +36,7 @@ function App() {
   const [modelId, setModelId] = useState(1);
   const [activeSearch, setActiveSearch] = useState(true);
   const [postFlag, setpostFlag] = useState(true);
-  const [authCategory, setAuthCategory] = useState('');
+  const [authCategory, setAuthCategory] = useState('Все категории');
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
