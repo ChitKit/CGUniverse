@@ -18,7 +18,7 @@ export default function ModelUploader({ setModalActive }) {
   }, []);
 
 
-  const submitModelHandler = useCallback(async (e) => {
+  const submitModelHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
 
@@ -36,7 +36,7 @@ export default function ModelUploader({ setModalActive }) {
     });
 
     //       .then((res) => setAvatar(res.data.path));
-  }, [files]);
+  };
 
   return (
     <div className="uploader">
