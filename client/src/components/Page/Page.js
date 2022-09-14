@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterModels_THUNK } from '../../redux/actions/actionFIlterSort';
-import { getModels_THUNK } from '../../redux/actions/modelAction';
-import { sortModels, sortModels_THUNK } from '../../redux/actions/sortActions';
+import { filterAllModels_THUNK, filterModels_THUNK } from '../../redux/actions/actionFIlterSort';
+import { sortModels_THUNK } from '../../redux/actions/sortActions';
 import OneCard from '../OneCard/OneCard';
 import Filter from './Filter/Filter';
 import './Page.css';
 
-export default function Page() {
+export default function Page({ setwind, setModelId, setModalActive }) {
   const [authCategory, setAuthCategory] = useState('Все категории');
   const [authSort, setAuthSort] = useState('');
   const filterModel = useSelector((s) => s.filterModel);
-  const model = useSelector((s) => s.model);
+  // const model = useSelector((s) => s.model);
   const auth = useSelector((s) => s.auth);
 
   console.log(auth);
@@ -19,17 +18,12 @@ export default function Page() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(filterModels_THUNK(authCategory));
-  }, [authCategory]);
-  useEffect(() => {
-    dispatch(sortModels_THUNK(authSort));
-  }, [authSort]);
-  useEffect(() => {
-    if (auth) {
-      dispatch(getModels_THUNK());
+    if (authCategory !== 'Все категории') {
+      dispatch(filterModels_THUNK(authCategory));
+    } else if (authCategory === 'Все категории') {
+      dispatch(filterAllModels_THUNK());
     }
-  }, []);
-  console.log(authCategory);
+  }, [authCategory]);
   return (
     <div className="container">
       <Filter setAuthCategory={setAuthCategory} setAuthSort={setAuthSort} />
@@ -39,10 +33,26 @@ export default function Page() {
         </div>
         <div className="modules-page">
           {(authCategory === 'Все категории')
-            ? (model.map((el) => (<OneCard model={el} key={el.id} />)))
+            ? (filterModel.map((el) => (
+              <OneCard
+                model={el}
+                key={el.id}
+                setwind={setwind}
+                setModelId={setModelId}
+                setModalActive={setModalActive}
+              />
+            )))
             : (filterModel[0]?.UserModels?.length > 0
               ? (filterModel.map((el) => el.UserModels
-                .map((a) => (<OneCard model={a} key={a.id} />))))
+                .map((a) => (
+                  <OneCard
+                    model={a}
+                    key={a.id}
+                    setwind={setwind}
+                    setModelId={setModelId}
+                    setModalActive={setModalActive}
+                  />
+                ))))
               : (<h1>В данной категории нет моделей</h1>))}
         </div>
       </main>

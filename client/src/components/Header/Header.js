@@ -7,11 +7,13 @@ import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
-export default function Header({ setModalActive, setwind }) {
+
+export default function Header({
+  setModalActive, setwind, searchQuery, setSearchQuery,
+}) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
-  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,18 +24,11 @@ export default function Header({ setModalActive, setwind }) {
   };
 
   useEffect(() => {
-    if (auth) {
-      dispatch(searchModels_THUNK(searchQuery));
-    }
-  }, [searchQuery]);
-
-  useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
     return () => {
       window.removeEventListener('scroll', listenScrollEvent);
     };
   }, []);
-
   const logOutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('http://localhost:3002/auth/logout', {
@@ -45,6 +40,7 @@ export default function Header({ setModalActive, setwind }) {
       navigate('/');
     }
   };
+  const handlerSubmit = (q) => (setSearchQuery(q.target.value));
 
   return (
     <header
@@ -109,7 +105,7 @@ export default function Header({ setModalActive, setwind }) {
         <a className="header-input-link" href="#">
           <input
             value={searchQuery}
-            onChange={(q) => (setSearchQuery(q.target.value))}
+            onChange={handlerSubmit}
             className="header-form-control"
             type="search"
             placeholder="Search"
@@ -119,9 +115,6 @@ export default function Header({ setModalActive, setwind }) {
         </a>
       </div>
       {/* {search.length && (
-      <Modal>
-        <div>hihihi</div>
-      </Modal>
       )} */}
       <div className="header-container-fourth">
         <a className="header-right-btn" href="#">
@@ -137,7 +130,7 @@ export default function Header({ setModalActive, setwind }) {
               src="shopping-cart-svgrepo-com.svg"
               alt="Cart"
               width="20px"
-              height="20"
+              height="20px"
               type="button"
             />
           </span>
@@ -155,14 +148,7 @@ export default function Header({ setModalActive, setwind }) {
               >
                 <span className="header-right-btn-text"> Войти</span>
               </a>
-              <a
-                className="header-btn header-right-btn2"
-                href="#"
-                onClick={() => {
-                  setwind('reg');
-                  setModalActive(true);
-                }}
-              >
+              <a className="header-btn header-right-btn2" href="#">
                 <span className="header-right-btn-text">Присоединиться </span>
               </a>
             </>
@@ -175,13 +161,23 @@ export default function Header({ setModalActive, setwind }) {
             : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
           }
               </Link>
-              <a className="header-btn header-right-btn2 heade-btn-logout" href="#">
+              <Link className="header-btn header-right-btn2 heade-btn-logout" to="/">
                 <span className="header-right-btn-text" onClick={logOutHandler}>Выйти</span>
-              </a>
+              </Link>
             </>
           )}
         <a className="header-btn header-right-btn3" href="#">
-          <span className="header-right-btn-text"> Загрузить</span>
+          <span
+            className="header-right-btn-text"
+            onClick={() => {
+              setwind('modelUpload');
+              setModalActive(true);
+            }}
+          >
+            {' '}
+            Загрузить
+
+          </span>
         </a>
       </div>
     </header>
