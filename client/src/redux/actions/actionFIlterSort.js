@@ -7,10 +7,12 @@ export const allCategory = (data) => ({ type: ALL_CATEGORY, payload: data });
 
 export const filterModels_THUNK = (categ) => (dispatch) => {
   try {
-    fetch('http://localhost:3002/api/category')
+    console.log(categ);
+    fetch(`http://localhost:3002/api/category/${categ}`)
       .then((res) => res.json())
       .then((res) => {
-        dispatch(filterModels(res.filter((el) => (el.name === categ))));
+        console.log(res);
+        dispatch(filterModels(res));
       });
   } catch (error) {
     console.log(error, 'ERROR');
