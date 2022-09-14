@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './OneCard.css';
 
 
-export default function OneCard({ model }) {
+export default function OneCard({
+  model, setwind, setModelId, setModalActive,
+}) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(searchModels_THUNK(model));
+  }, []);
   return (
     <div className="card">
       <img
         className="model-img"
         src={`http://localhost:3002/${model.pic}`}
         alt="img"
-        onClick={() => console.log('hello')}
+        onClick={() => {
+          {
+            setModelId(model.id);
+            setwind('onemodel');
+            setModalActive(true);
+            dispatch(searchModels_THUNK(model.id));
+            setSearchQuery('');
+          }
+        }}
       />
       <div className="card-footer">
         <div className="card-footer-left" onClick={() => (console.log('author`s profile'))}>
