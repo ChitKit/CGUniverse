@@ -17,7 +17,8 @@ export default function Header({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
+  const filterModels = useSelector((s) => s.filterModels);
+  
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
