@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
@@ -41,10 +43,10 @@ export default function OneCard({
             <img className="icon-img" src="/icons/2102115.png" alt="..." />
             <p className="card-footer-text">1000</p>
           </div> */}
-          <div className="icon comment" onClick={() => (console.log('comment'))}>
+          {/* <div className="icon comment" onClick={() => (console.log('comment'))}>
             <img className="icon-img" src="/icons/chat.png" alt="..." />
             <p className="card-footer-text">1000</p>
-          </div>
+          </div> */}
           <div className="icon favorite" onClick={() => (console.log('favorite'))}>
             <img className="icon-img" src="/icons/star.png" alt="..." />
             <p className="card-footer-text">1000</p>
