@@ -25,6 +25,7 @@ import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
 import PrevAuth from './components/PrevAuth/PrevAuth';
 import ForBusiness from './components/ForBusiness/ForBusiness';
+import EditBiography from './components/EditBiography/EditBiography';
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -82,15 +83,18 @@ function App() {
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : wind === 'modelUpload'
+                    ) : wind === 'editBio'
                       ? (
-                        <ModelUploader auth={auth} setModalActive={setModalActive} />
-                      ) : wind === 'addPost'
+                        <EditBiography auth={auth} setModalActive={setModalActive} />
+                      ) : wind === 'modelUpload'
                         ? (
-                          <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
-                        ) : (
-                          <p />
-                        )}
+                          <ModelUploader auth={auth} setModalActive={setModalActive} />
+                        ) : wind === 'addPost'
+                          ? (
+                            <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
+                          ) : (
+                            <p />
+                          )}
       </Modal>
       )}
       {/* <Page /> */}
@@ -132,7 +136,7 @@ function App() {
 )}
         />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
-        <Route path="/profileLike" element={<ProfileLike />} />
+        <Route path="/profileLike" element={<ProfileLike setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
         <Route path="/prevauth" element={<PrevAuth />} />
         <Route path="/forbusiness" element={<ForBusiness />} />

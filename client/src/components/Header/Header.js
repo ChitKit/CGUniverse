@@ -91,7 +91,7 @@ export default function Header({
             </div>
           </div>
           <div className="header-navigation-item-dropdown1">
-            <NavLink className="header-navigation-link-dropdown-toggle1" to="/page">
+            <NavLink className="header-navigation-link-dropdown-toggle1" to="/page" onClick={() => setAuthCategory('Все категории')}>
               К покупкам
             </NavLink>
             <div className="header-dropdown-menu1">
@@ -193,7 +193,7 @@ export default function Header({
             <>
               <Link to="/profile">
                 {
-          (auth?.avatar !== null)
+          (auth?.avatar)
             ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
             : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
           }

@@ -27,7 +27,7 @@ export default function Profile({
     }
   }, [auth]);
 
-
+  console.log(auth);
 
 
   return (
@@ -43,7 +43,7 @@ export default function Profile({
           >
             <span className="profile-photo-text">Изменить фотографию</span>
             {
-          (auth?.avatar !== null)
+          (auth?.avatar)
             ? <img className="profile-photo" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
             : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
           }
@@ -164,7 +164,15 @@ export default function Profile({
         <div className="profile-two-sides-right">
           <div className="profile-two-sides-right-table">
             <h3 className="profile-two-sides-first-tabel-title"> ABOUT</h3>
-            <a className="profile-two-sides-first-tabel-links" href="#">
+            <p className="profile-two-sides-first-tabel-p">{auth?.bio}</p>
+            <a
+              className="profile-two-sides-first-tabel-links"
+              href="#"
+              onClick={() => {
+                setwind('editBio');
+                setModalActive(true);
+              }}
+            >
               Edit your biography
             </a>
             {/* <h3 className="profile-two-sides-first-tabel-title"> CATEGORY</h3>
@@ -221,6 +229,7 @@ export default function Profile({
               Add your skills
             </a>
           </div> */}
+          
         </div>
       </div>
     </div>
