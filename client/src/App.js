@@ -23,6 +23,8 @@ import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
+import PrevAuth from './components/PrevAuth/PrevAuth';
+import ForBusiness from './components/ForBusiness/ForBusiness';
 import EditBiography from './components/EditBiography/EditBiography';
 
 function App() {
@@ -122,18 +124,22 @@ function App() {
         <Route
           path="/page"
           element={(
-            <Page
-              setwind={setwind}
-              setModelId={setModelId}
-              setModalActive={setModalActive}
-              setAuthCategory={setAuthCategory}
-              authCategory={authCategory}
-            />
+            <PrevAuth>
+              <Page
+                setwind={setwind}
+                setModelId={setModelId}
+                setModalActive={setModalActive}
+                setAuthCategory={setAuthCategory}
+                authCategory={authCategory}
+              />
+            </PrevAuth>
 )}
         />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
+        <Route path="/prevauth" element={<PrevAuth />} />
+        <Route path="/forbusiness" element={<ForBusiness />} />
       </Routes>
 
     </div>
