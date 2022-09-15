@@ -23,6 +23,7 @@ import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
+import EditBiography from './components/EditBiography/EditBiography';
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -80,15 +81,18 @@ function App() {
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : wind === 'modelUpload'
+                    ) : wind === 'editBio'
                       ? (
-                        <ModelUploader auth={auth} setModalActive={setModalActive} />
-                      ) : wind === 'addPost'
+                        <EditBiography auth={auth} setModalActive={setModalActive} />
+                      ) : wind === 'modelUpload'
                         ? (
-                          <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
-                        ) : (
-                          <p />
-                        )}
+                          <ModelUploader auth={auth} setModalActive={setModalActive} />
+                        ) : wind === 'addPost'
+                          ? (
+                            <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
+                          ) : (
+                            <p />
+                          )}
       </Modal>
       )}
       {/* <Page /> */}
