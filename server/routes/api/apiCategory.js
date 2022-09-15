@@ -17,7 +17,7 @@ router.get('/allCategory', async (req, res) => {
 router.get('/:categ', async (req, res) => {
   const userId = req.session.userSession.id;
   const { categ } = req.params;
-  console.log(categ, 'CCCCCCCCCCCCCCCCCCCCCC');
+  // console.log(categ, 'CCCCCCCCCCCCCCCCCCCCCC');
   if (categ === 'allModels' || categ === 'Все категории') {
     const result = await UserModel.findAll({ include: [Category, LikeModel, User] });
 
@@ -32,7 +32,7 @@ router.get('/:categ', async (req, res) => {
       console.log(flag, 'FLAG');
       return { ...el, flag: flag > -1 };
     }));
-    // console.log(final, 'final');
+      // console.log(final, 'final');
     return res.json({ UserModels: final });
   }
 
