@@ -17,27 +17,30 @@ export default function UserModels({
   const deleteLikeHandler = (e) => {
     // e.preventDefault();
     if (el.flag) {
-      dispatch(deleteLike_THUNK(el.id, auth?.id));
+      dispatch(deleteLike_THUNK(el.id));
     } else {
-      dispatch(createLike_THUNK(el.id, auth?.id));
+      dispatch(createLike_THUNK(el.id));
     }
   };
 
-  console.log(el.LikeModels, 'el.LikeModels');
+  // console.log(el.LikeModels, 'el.LikeModels');
   return (
     <div
       className="card"
-      onClick={() => {
+    >
+      <div onClick={() => {
         setModelId(el.id);
         setwind('onemodel');
         setModalActive(true);
       }}
-    >
-      <img
-        className="model-img"
-        src={`http://localhost:3002${el.pic}`}
-        alt={el.name}
-      />
+      >
+        {' '}
+        <img
+          className="model-img"
+          src={`http://localhost:3002${el.pic}`}
+          alt={el.name}
+        />
+      </div>
       <div className="card-footer">
         <div className="card-footer-left">
           {/* <img

@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 
-export default function AvatarLoading({ img, setImg, setAvatar }) {
-//   const [img, setImg] = useState(null);
-//   const [avatar, setAvatar] = useState(null);
-
-
-  const sendFile = useCallback(() => {
+export default function AvatarLoading({
+  img, setImg, setAvatar,
+}) {
+  const sendFile = useCallback(async () => {
     const data = new FormData();
     data.append('avatar', img);
+    console.log(data);
     axios.post('http://localhost:3002/upload/photoAvatar', data, {
       headers: {
         'Content-Type': 'mulpipart/form-data',
       },
+      withCredentials: true,
     })
+
       .then((res) => setAvatar(res.data.path));
   }, [img]);
   return (

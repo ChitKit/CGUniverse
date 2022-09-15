@@ -8,6 +8,7 @@ const path = require('path');
 const cors = require('cors');
 const auth = require('./routes/api/apiAuth');
 const apiModels = require('./routes/api/apiModels');
+const apiComment = require('./routes/api/apiComment');
 const apiCategory = require('./routes/api/apiCategory');
 const apiLikes = require('./routes/api/apiLikes');
 const apiMulter = require('./routes/api/apiMulter');
@@ -20,10 +21,13 @@ app.use(cors({
   credentials: true,
 }));
 
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use(express.static(path.join('public')));
+app.use(express.static(path.join('public2')));
 app.use('/image', express.static(path.join(__dirname, 'image')));
 
 const sessionConfig = {
@@ -44,9 +48,10 @@ app.use(session(sessionConfig));
 app.use('/api', apiModels);
 app.use('/auth', auth);
 app.use('/api/like', apiModels);
+app.use('/api/comment', apiComment);
 app.use('/api/category', apiCategory);
 app.use('/apilike', apiLikes);
-app.use('/upload', apiMulter)
+app.use('/upload', apiMulter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
