@@ -132,7 +132,7 @@ function App() {
 )}
         />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
-        <Route path="/profileLike" element={<ProfileLike />} />
+        <Route path="/profileLike" element={<ProfileLike setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
       </Routes>
 

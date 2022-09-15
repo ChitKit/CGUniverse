@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { deleteLike_THUNK } from '../../redux/actions/likeAction';
 
 
-export default function UserLikes({ el, like }) {
+export default function UserLikes({
+  el, like, setModelId, setwind, setModalActive,
+}) {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   console.log(el, 'ELEMENT');
@@ -21,6 +23,11 @@ export default function UserLikes({ el, like }) {
         className="model-img"
         src={`http://localhost:3002${el.pic}`}
         alt={el.name}
+        onClick={() => {
+          setModelId(el.id);
+          setwind('onemodel');
+          setModalActive(true);
+        }}
       />
       <div className="card-footer">
         <div className="card-footer-left">
