@@ -12,7 +12,7 @@ router.post('/photoAvatar', fileMiddleware.single('avatar'), async (req, res) =>
       const us = await User.findOne({ where: { id: req.session.userSession.id } });
       us.avatar = req.file.path;
       us.save();
-      res.json(req.file);
+      res.json(us);
     }
   } catch (error) {
     console.log(error);
