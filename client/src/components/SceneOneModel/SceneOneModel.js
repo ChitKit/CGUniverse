@@ -25,7 +25,7 @@ export default function SceneOneModel({ modelId }) {
       <Suspense fallback={null}>
         <Canvas className="can" camera={{ position: [0.5, 1, 1], fov: 30 }}>
 
-          <ambientLight intensity={0.2} />
+          <ambientLight />
           <pointLight position={[10, 30, 10]} />
           {model && <OneModel oneModel={model} />}
 
@@ -34,6 +34,7 @@ export default function SceneOneModel({ modelId }) {
 
         </Canvas>
       </Suspense>
+      <a href={`http://localhost:3002${model?.path}`}>Скачать</a>
     </div>
 
   );

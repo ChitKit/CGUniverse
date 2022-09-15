@@ -4,6 +4,7 @@ import axios from 'axios';
 import './ModelUploader.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategory_THUNK } from '../../redux/actions/categoryAction';
+import { getModels_THUNK } from '../../redux/actions/modelAction';
 
 
 export default function ModelUploader({ setModalActive }) {

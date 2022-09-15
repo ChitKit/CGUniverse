@@ -203,13 +203,17 @@ export default function Header({
               </Link>
             </>
           )}
-        <a className="header-btn header-right-btn3" href="#">
+        <a
+          className="header-btn header-right-btn3"
+          href="#"
+          onClick={() => {
+            setwind('modelUpload');
+            setModalActive(true);
+          }}
+        >
           <span
             className="header-right-btn-text"
-            onClick={() => {
-              setwind('modelUpload');
-              setModalActive(true);
-            }}
+
           >
             {' '}
             Загрузить
