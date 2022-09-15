@@ -1,5 +1,5 @@
-/* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-undef */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike_THUNK, deleteLike_THUNK } from '../../redux/actions/likeAction';
@@ -37,7 +37,7 @@ export default function OneCard({
             setwind('onemodel');
             setModalActive(true);
             dispatch(searchModels_THUNK(model.id));
-            // setSearchQuery('');
+            setSearchQuery('');
           }
         }}
       />
