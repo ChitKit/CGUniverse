@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 const express = require('express');
 const { Category, UserModel, LikeModel } = require('../../db/models');
 
@@ -9,19 +10,48 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:categ', async (req, res) => {
+  const userId = req.session.userSession.id;
   const { categ } = req.params;
-  if (categ === 'allModels') {
+  console.log(categ, 'CCCCCCCCCCCCCCCCCCCCCC');
+  if (categ === 'allModels' || categ === 'Все категории') {
     const result = await UserModel.findAll({ include: [Category, LikeModel] });
-    console.log(result);
-    return res.json(result);
+
+    const new1 = JSON.parse(JSON.stringify(result));
+    const final = (new1.map((el) => {
+      console.log(el);
+      const flag = el.LikeModels.findIndex((element) => {
+        // console.log(userId, 'USER_ID');
+        // console.log(element.user_id, 'element.user_id');
+        return +element.user_id === +userId;
+      });
+      console.log(flag, 'FLAG');
+      return { ...el, flag: flag > -1 };
+    }));
+    // console.log(final, 'final');
+    return res.json({ UserModels: final });
   }
+
   const result = await Category.findOne({ include: { model: UserModel, include: LikeModel }, where: { name: categ } });
-  return res.json(result);
+
+  console.log(result, 'REESSSSS!!!!!');
+  const new1 = JSON.parse(JSON.stringify(result));
+  // console.log(new1);
+  console.log(new1, 'NEW!!!!!!!');
+  const final = (new1.UserModels.map((el) => {
+    const flag = el.LikeModels.findIndex((element) => {
+      // console.log(userId, 'USER_ID');
+      // console.log(element.user_id, 'element.user_id');
+      return +element.user_id === +userId;
+    });
+      // console.log(flag, 'FLAG');
+    return { ...el, flag: flag > -1 };
+  }));
+  console.log(final);
+  return res.json({ UserModels: final });
 });
 
 router.get('/allModels', async (req, res) => {
   const result = await UserModel.findAll({ include: [Category, LikeModel] });
-  console.log(result);
   res.json(result);
 });
 
