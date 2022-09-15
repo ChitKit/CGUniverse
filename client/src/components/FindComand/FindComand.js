@@ -40,7 +40,21 @@ export default function FindComand({ setModalActive, setwind }) {
                 <div
                   className="FindComand-post"
                 >
-                  <img className="FindComand-image" src="/noPhoto.jpeg" alt="" />
+                  <div
+                    className="FindComand-photo-contener"
+                    onClick={() => {
+                      setwind('avatar');
+                      setModalActive(true);
+                    }}
+                  >
+                    <span className="FindComand-photo-text">Изменить фотографию</span>
+                    {
+          (auth?.avatar !== null)
+            ? <img className="FindComand-image" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="FindComand-image" src="/noPhoto.jpeg" alt="пустое фото" />
+          }
+                  </div>
+                  {/* <img className="FindComand-image" src="/noPhoto.jpeg" alt="" /> */}
                   <div className="FindComand-text-container">
                     <h1 className="FindComand-post-title">{el.title}</h1>
                     <p className="FindComand-post-description">{el.description}</p>

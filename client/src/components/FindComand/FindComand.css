@@ -62,6 +62,9 @@
 .FindComand-image {
     height: 200px;
     width: 250px;
+    position: relative;
+    top: -9.5%;
+
     
 }
 
@@ -91,4 +94,27 @@
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+}
+
+.FindComand-photo-contener { display: block; position: relative; }
+.FindComand-photo-contener:after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
+.FindComand-photo-contener:hover:before,
+.FindComand-photo-contener:hover:after { opacity: 1; }
+
+.FindComand-photo-contener {
+    width:250px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    color: rgba(255, 255, 255, 0);
+}
+
+.FindComand-photo-contener:hover {
+    color: rgba(255, 255, 255, 0.851);
+}
+
+.FindComand-photo-text {
+    position: relative;
+    top: 44%;
+    z-index: 1;
 }

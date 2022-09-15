@@ -167,8 +167,22 @@ export default function Header({
               >
                 <span className="header-right-btn-text"> Войти</span>
               </a>
-              <a className="header-btn header-right-btn2" href="#">
-                <span className="header-right-btn-text">Присоединиться </span>
+              <a
+                className="header-btn header-right-btn2"
+                href="#"
+                onClick={() => {
+                  setwind('reg');
+                  setModalActive(true);
+                }}
+              >
+                <span
+                  className="header-right-btn-text"
+
+                >
+                  Присоединиться
+                  {' '}
+
+                </span>
               </a>
             </>
           ) : (
