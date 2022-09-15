@@ -16,7 +16,6 @@ export default function Profile({
   const like = useSelector((state) => state.like);
   const model = useSelector((state) => state.model);
   const dispatch = useDispatch();
-  console.log(model);
 
   // загрузка фото
 
@@ -113,7 +112,17 @@ export default function Profile({
               </Link>
             </li>
             <li className="profile-one-btn">
-              <a className="profile-fifth-btn-a" href="/upload">Uploads</a>
+              <Link
+                className="profile-fifth-btn-a"
+                to="/profile"
+                onClick={() => {
+                  setwind('modelUpload');
+                  setModalActive(true);
+                }}
+              >
+                Загрузить модель
+
+              </Link>
             </li>
           </ul>
         </div>
