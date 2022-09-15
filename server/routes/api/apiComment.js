@@ -8,8 +8,8 @@ route.post('/:id', async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
   const newComment = await Comment.create({ model_id: id, user_id: req.session.userSession.id, text });
-  console.log(newComment, 'CREATED');
-  res.json(newComment);
+  const result = await Comment.findOne({ where: { id: newComment.id }, include: User });
+  res.json(result);
 });
 
 route.get('/', async (req, res) => {

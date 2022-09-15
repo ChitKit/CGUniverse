@@ -45,29 +45,26 @@ export default function ModelUploader({ setModalActive }) {
   return (
     <div className="uploader">
       <h1 className="loading-title uploader-title">Загрузить новую модель</h1>
-      <form onSubmit={submitModelHandler}>
+      <form onSubmit={submitModelHandler} className="formEdit">
         <label className="input-text">Название модели:</label>
         <input type="text" name="name" onChange={(e) => setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))} />
-        <div className="flex-conteiner">
-          <div className="input__wrapper">
-            <input id="input__file" className="input input__file" type="file" name="model" onChange={(e) => setFiles((prev) => [...prev, ...e.target.files])} />
-            <label htmlFor="input__file" className="input__file-button">
-              <span className="input__file-icon-wrapper">
-                <img className="input__file-icon" src="./file.png" alt="Выбрать файл" width="25" />
-              </span>
-              <span className="input__file-button-text">Загрузить модель</span>
-            </label>
-          </div>
-    <div className='otstup'></div>
-          <div className="input__wrapper">
-            <input type="file" id="input__file" className="input input__file" name="pic" onChange={(e) => setFiles((prev) => [...prev, ...e.target.files])} />
-            <label htmlFor="input__file" className="input__file-button">
-              <span className="input__file-icon-wrapper">
-                <img className="input__file-icon" src="./file.png" alt="Выбрать файл" width="25" />
-              </span>
-              <span className="input__file-button-text">Загрузить изображение модели</span>
-            </label>
-          </div>
+        <div className="input__wrapper">
+          <input id="input__file" className="input input__file" type="file" name="model" onChange={(e) => setFiles((prev) => [...prev, ...e.target.files])} />
+          <label htmlFor="input__file" className="input__file-button">
+            <span className="input__file-icon-wrapper">
+              <img className="input__file-icon" src="./file.png" alt="Выбрать файл" width="25" />
+            </span>
+            <span className="input__file-button-text">Загрузить модель</span>
+          </label>
+        </div>
+        <div className="input__wrapper">
+          <input type="file" id="input__file" className="input input__file" name="pic" onChange={(e) => setFiles((prev) => [...prev, ...e.target.files])} />
+          <label htmlFor="input__file" className="input__file-button">
+            <span className="input__file-icon-wrapper">
+              <img className="input__file-icon" src="./file.png" alt="Выбрать файл" width="25" />
+            </span>
+            <span className="input__file-button-text">Загрузить изображение модели</span>
+          </label>
         </div>
         <select
           className="select"

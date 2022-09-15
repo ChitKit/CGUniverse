@@ -7,11 +7,11 @@ export const allCategory = (data) => ({ type: ALL_CATEGORY, payload: data });
 
 export const filterModels_THUNK = (categ) => (dispatch) => {
   try {
-    console.log(categ);
-    fetch(`http://localhost:3002/api/category/${categ}`)
+    fetch(`http://localhost:3002/api/category/${categ}`, {
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         dispatch(filterModels(res));
       });
   } catch (error) {
@@ -21,7 +21,9 @@ export const filterModels_THUNK = (categ) => (dispatch) => {
 
 export const filterAllModels_THUNK = () => (dispatch) => {
   try {
-    fetch('http://localhost:3002/api/category/allModels')
+    fetch('http://localhost:3002/api/category/allModels', {
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         dispatch(filterAllModels(res));

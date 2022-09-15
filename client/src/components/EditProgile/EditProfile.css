@@ -1,1 +1,20 @@
-.divMainPage {}
+.br {
+    border-radius: 50px;
+}
+
+.btn-size {
+    width: 70%;
+}
+
+.formEdit {
+    width: 100%;
+}
+
+.input-edit {
+    margin-bottom: 7%;
+}
+
+.text-right {
+    font-weight: bold;
+    font-size: 1.5em;
+}

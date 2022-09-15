@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import setAuth from '../../redux/actions/authActions';
+import { setAuth } from '../../redux/actions/authActions';
 import './AvatarLoading.css';
 
 export default function AvatarLoading({
@@ -19,7 +22,7 @@ export default function AvatarLoading({
       withCredentials: true,
     })
 
-      .then((res) => { setAvatar(res.data.path); disptach(setAuth()); setModalActive(false); });
+      .then((res) => { setAvatar(res.data.path); disptach(setAuth(res.data)); });
   };
   return (
     <div className="loading-container">

@@ -51,6 +51,7 @@ export default function Page({
                   setwind={setwind}
                   setModelId={setModelId}
                   setModalActive={setModalActive}
+                  authCategory={authCategory}
                 />
               )))
               : (<h1>В данной категории нет моделей</h1>))}

@@ -51,11 +51,3 @@ input[type=text] {
     font-size: 1rem;
     color: #444;
 }
-
-.flex-conteiner {
-    display: flex;
-}
-
-.otstup {
-    width: 25px;
-}

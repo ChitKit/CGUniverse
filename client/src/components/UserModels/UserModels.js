@@ -17,9 +17,9 @@ export default function UserModels({
   const deleteLikeHandler = (e) => {
     // e.preventDefault();
     if (el.flag) {
-      dispatch(deleteLike_THUNK(el.id, auth?.id));
+      dispatch(deleteLike_THUNK(el.id));
     } else {
-      dispatch(createLike_THUNK(el.id, auth?.id));
+      dispatch(createLike_THUNK(el.id));
     }
   };
 

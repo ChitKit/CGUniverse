@@ -1,0 +1,28 @@
+input[type=email] {
+    width: 70%;
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+
+  input[type=password] {
+    width: 70%;
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+
+  .form-section-log {
+    width: 30em;
+    height: 10em;
+  }
+
+  .form-log {
+    margin-top: 10%;
+
+  }
+
+  .form-log input {
+    margin-top: 5%;
+
+  }
