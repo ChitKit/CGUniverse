@@ -193,7 +193,7 @@ export default function Header({
             <>
               <Link to="/profile">
                 {
-          (auth?.avatar !== null)
+          (auth?.avatar)
             ? <img className="header-main-icon" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
             : <img className="header-main-icon" src="profile-photo.jpeg" alt="пустое фото" />
           }

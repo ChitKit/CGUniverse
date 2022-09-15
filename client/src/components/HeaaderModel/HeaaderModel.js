@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Scene from '../Scene/Scene';
 import './HeaaderModel.css';
+import easterBreaker from '../../break';
+
 
 export default function HeaaderModel({ setModalActive, setwind }) {
   const { auth } = useSelector((state) => state);
@@ -15,7 +18,7 @@ export default function HeaaderModel({ setModalActive, setwind }) {
             Платформа для покупки
             <br />
             {' '}
-            и продажи 3D и AR в
+            и продажи 3D в
             {' '}
             <br />
             Интернете
@@ -23,7 +26,9 @@ export default function HeaaderModel({ setModalActive, setwind }) {
         </div>
         <div className="heaader-model-box-text">
           <p className="heaader-model-text">
-            Управляйте своими 3D-ресурсами.
+            <span onClick={easterBreaker}>Управляйте</span>
+            {' '}
+            своими 3D-ресурсами.
             Распространяйте опыт 3D и AR. Сотрудничайте с другими. Продемонстрируйте свою работу.
             <br />
             {' '}
