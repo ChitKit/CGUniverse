@@ -1,4 +1,5 @@
 import { CREATE_LIKE, DELETE_LIKE, GET_LIKES } from '../types/types';
+import { filterModels_THUNK } from './actionFIlterSort';
 import { getModels_THUNK } from './modelAction';
 
 export const createLike = (data) => ({ type: CREATE_LIKE, payload: data });
@@ -17,7 +18,7 @@ export const getLike_THUNK = (userId) => (dispatch) => {
     });
 };
 
-export const createLike_THUNK = (id) => (dispatch) => {
+export const createLike_THUNK = (id, authCategory) => (dispatch) => {
   fetch(
     `http://localhost:3002/apilike/like/${id}`,
     {
@@ -33,12 +34,17 @@ export const createLike_THUNK = (id) => (dispatch) => {
     })
     .then(() => {
       dispatch(getLike_THUNK());
+    })
+    .then(() => {
+      if (authCategory) {
+        dispatch(filterModels_THUNK(authCategory));
+      }
     });
 };
 
 // dispatch(getModels_THUNK());
 // dispatch(getLike_THUNK());
-export const deleteLike_THUNK = (id) => (dispatch) => {
+export const deleteLike_THUNK = (id, authCategory) => (dispatch) => {
   fetch(
     `http://localhost:3002/apilike/like/${id}`,
     {
@@ -55,5 +61,10 @@ export const deleteLike_THUNK = (id) => (dispatch) => {
     })
     .then(() => {
       dispatch(getLike_THUNK());
+    })
+    .then(() => {
+      if (authCategory) {
+        dispatch(filterModels_THUNK(authCategory));
+      }
     });
 };
