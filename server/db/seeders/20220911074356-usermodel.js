@@ -42,7 +42,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Меч из final fantasy',
+        name: 'Меч fantasy',
         path: '/models/final_fantasy_sword.glb',
         pic: '/img_models/final_fantasy_sword_pic.png',
         user_id: 1,
@@ -52,7 +52,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Меч из аниме местер меча онлайн',
+        name: 'Меч местер меча',
         path: '/models/sao_sword.glb',
         pic: '/img_models/sao_sword_pic.png',
         user_id: 1,
@@ -82,7 +82,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Топор из игры World of warcraft',
+        name: 'Топор World of warcraft',
         path: '/models/wow_axe.glb',
         pic: '/img_models/wow_axe_pic.png',
         user_id: 1,
@@ -92,7 +92,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Колона из Genshin Impact',
+        name: 'Колона Genshin Impact',
         path: '/models/genshin_column.glb',
         pic: '/img_models/genshin_column_pic.png',
         user_id: 1,
@@ -102,7 +102,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Фонарный столб из Genshin Impact',
+        name: 'Фонарный столб',
         path: '/models/genshin_light.glb',
         pic: '/img_models/genshin_light_pic.png',
         user_id: 1,

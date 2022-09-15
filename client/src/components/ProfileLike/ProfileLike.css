@@ -1,8 +1,8 @@
 .profile-general-container {
     background-color: #f2f2f2;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    /* position: relative; */
+    /* height: 100%;
+    width: 100%; */
 }
 
 .profile-photo-name-and-btn {
@@ -105,7 +105,7 @@
 
 .profile-third-btn-ul {
     list-style-type: none;
-    position: absolute;
+    position: relative;
     display: none;
     top: 100%;
     left: 0;

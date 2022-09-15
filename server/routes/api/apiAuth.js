@@ -21,7 +21,9 @@ route.post('/registration', async (req, res) => {
     if (!user) {
       const newUser = await User.create({ email, name, password: hashPassword });
       req.session.userSession = { email: newUser.email, name: newUser.name, id: newUser.id };
-      return res.json({ email: newUser.email, name: newUser.name, id: newUser.id });
+      return res.json({
+        email: newUser.email, name: newUser.name, id: newUser.id, avatar: newUser.avatar,
+      });
     }
     res.status(400).json({ message: 'Такой email уже занят' });
   } catch (err) {
@@ -37,7 +39,9 @@ route.post('/login', async (req, res) => {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
         req.session.userSession = { email: user.email, name: user.name, id: user.id };
-        return res.json({ email: user.email, name: user.name, id: user.id });
+        return res.json({
+          email: user.email, name: user.name, id: user.id, avatar: user.avatar,
+        });
       }
     }
     res.status(400).json({ message: 'Email или пароль не верны' });

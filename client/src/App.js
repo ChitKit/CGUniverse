@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
 // import { useEffect } from 'react';
 import { useEffect, useState } from 'react';
@@ -23,6 +24,7 @@ import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -36,6 +38,7 @@ function App() {
   const [modelId, setModelId] = useState(1);
   const [activeSearch, setActiveSearch] = useState(true);
   const [postFlag, setpostFlag] = useState(true);
+  const [authCategory, setAuthCategory] = useState('Все категории');
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -69,7 +72,7 @@ function App() {
                 <BasketShop />
               ) : wind === 'avatar'
                 ? (
-                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
                 ) : wind === 'onemodel'
                   ? (
                     <div className="api-convas-container-comment">
@@ -97,6 +100,7 @@ function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setActiveSearch={setActiveSearch}
+        setAuthCategory={setAuthCategory}
       />
       {
       (searchQuery.length !== 0 && activeSearch)
@@ -113,11 +117,23 @@ function App() {
         }
       <Routes>
         <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
-        <Route path="/page" element={<Page setwind={setwind} setModelId={setModelId} setModalActive={setModalActive} />} />
+        <Route
+          path="/page"
+          element={(
+            <Page
+              setwind={setwind}
+              setModelId={setModelId}
+              setModalActive={setModalActive}
+              setAuthCategory={setAuthCategory}
+              authCategory={authCategory}
+            />
+)}
+        />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} />} />
       </Routes>
+      <Footer />
 
     </div>
   );

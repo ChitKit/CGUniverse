@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { filterModels_THUNK } from '../../redux/actions/actionFIlterSort';
 import { logout } from '../../redux/actions/authActions';
 import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Header.css';
 
 
 export default function Header({
-  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch,
+  setModalActive, setwind, searchQuery, setSearchQuery, setActiveSearch, setAuthCategory,
 }) {
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
@@ -49,8 +50,10 @@ export default function Header({
   };
   const handlerSubmit = (q) => (setSearchQuery(q.target.value));
   const handleClick = (e) => {
-    console.log(e.target.innerText);
-    
+    e.preventDefault();
+    setAuthCategory(e.target.innerText);
+    // dispatch(filterModels_THUNK(e.target.innerText));
+    navigate('/page');
   };
   return (
     <header
@@ -70,10 +73,10 @@ export default function Header({
       <div className="header-container-second">
         <ul className="header-navigation">
           <div className="header-navigation-item-dropdown1">
-            <a className="header-navigation-link-dropdown-toggle1" href="#">
-              Использование
-            </a>
-            <div className="header-dropdown-menu1">
+            <Link className="header-navigation-link-dropdown-toggle1" to="/findComand">
+              Найти Команду
+            </Link>
+            {/* <div className="header-dropdown-menu1">
               <a className="header-dropdown-item1" href="#">11111 </a>
               <a className="header-dropdown-item1" href="#">22222 </a>
               <a className="header-dropdown-item1" href="#">33333 </a>
@@ -85,7 +88,7 @@ export default function Header({
               <a className="header-dropdown-item1" href="#">11111 </a>
               <a className="header-dropdown-item1" href="#">44444 </a>
 
-            </div>
+            </div> */}
           </div>
           <div className="header-navigation-item-dropdown1">
             <NavLink className="header-navigation-link-dropdown-toggle1" to="/page">
@@ -120,6 +123,7 @@ export default function Header({
       </div>
       <div className="header-container-third">
         <a className="header-input-link" href="#">
+          {/* ПОИСК */}
           <input
             // onBlur={() => { setActiveSearch(false); }}
             // onFocus={() => setActiveSearch(true)}
@@ -136,7 +140,7 @@ export default function Header({
       {/* {search.length && (
       )} */}
       <div className="header-container-fourth">
-        <a className="header-right-btn" href="#">
+        {/* <a className="header-right-btn" href="#">
           <span
             className="header-right-btn-text"
             onClick={() => {
@@ -153,7 +157,7 @@ export default function Header({
               type="button"
             />
           </span>
-        </a>
+        </a> */}
         {!auth?.id
           ? (
             <>
@@ -199,13 +203,17 @@ export default function Header({
               </Link>
             </>
           )}
-        <a className="header-btn header-right-btn3" href="#">
+        <a
+          className="header-btn header-right-btn3"
+          href="#"
+          onClick={() => {
+            setwind('modelUpload');
+            setModalActive(true);
+          }}
+        >
           <span
             className="header-right-btn-text"
-            onClick={() => {
-              setwind('modelUpload');
-              setModalActive(true);
-            }}
+
           >
             {' '}
             Загрузить
