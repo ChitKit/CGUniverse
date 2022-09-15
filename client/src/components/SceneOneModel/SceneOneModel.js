@@ -25,7 +25,7 @@ export default function SceneOneModel({ modelId }) {
       <Suspense fallback={null}>
         <Canvas className="can" camera={{ position: [0.5, 1, 1], fov: 30 }}>
 
-          <ambientLight />
+          <ambientLight intensity={0.1} />
           <pointLight position={[10, 30, 10]} />
           {model && <OneModel oneModel={model} />}
 

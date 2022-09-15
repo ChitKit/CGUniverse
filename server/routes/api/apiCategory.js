@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 const express = require('express');
-const { Category, UserModel, LikeModel } = require('../../db/models');
+const { Category, UserModel, LikeModel, User } = require('../../db/models');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/:categ', async (req, res) => {
   const { categ } = req.params;
   console.log(categ, 'CCCCCCCCCCCCCCCCCCCCCC');
   if (categ === 'allModels' || categ === 'Все категории') {
-    const result = await UserModel.findAll({ include: [Category, LikeModel] });
+    const result = await UserModel.findAll({ include: [Category, LikeModel, User] });
 
     const new1 = JSON.parse(JSON.stringify(result));
     const final = (new1.map((el) => {
