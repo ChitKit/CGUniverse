@@ -97,6 +97,7 @@ export default function Header({
             <div className="header-dropdown-menu1">
               {category.map((categ) => (
                 <a
+                  key={categ.id}
                   onClick={handleClick}
                   className="header-dropdown-item1"
                   href="#"

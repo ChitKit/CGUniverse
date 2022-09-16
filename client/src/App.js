@@ -120,7 +120,7 @@ function App() {
         )
         }
       <Routes>
-        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
+        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} setModelId={setModelId} />} />
         <Route
           path="/page"
           element={(
