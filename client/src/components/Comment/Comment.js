@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/actions/authActions';
 import { createComment_THUNK, getComment_THUNK } from '../../redux/actions/commentAction';
 import { getModel, getModel_THUNK } from '../../redux/actions/oneModelAction';
+import './Comment.css';
 
 export default function Comment({ modelId }) {
   const [data, setData] = useState({ text: '' });
@@ -31,24 +32,26 @@ export default function Comment({ modelId }) {
 
   // console.log(model, 'MODEL');
   return (
-    <div>
-      <div>
-        <button type="button">
-          Скачать
+    <div className="comment-container">
+      <div className="comment-div-with-button">
+        <button type="button" className="comment-div-button btn btn-color">
+          <a href={`http://localhost:3002${model?.path}`} className="comment-div-button-a">
+            Скачать
+          </a>
         </button>
       </div>
       <div>
         <h2>Comments</h2>
         <div>
-          <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler} className="comment-addform">
             <input type="text" name="text" onChange={inputHandler} value={data?.text} placeholder="Оставь комментарий" />
           </form>
         </div>
         <div>
           {comment?.map((el) => (
-            <div>
-              <p>{el?.User?.name}</p>
-              <p>
+            <div className="comment-one-comment">
+              <p className="comment-one-comment-name">{el?.User?.name}</p>
+              <p className="comment-one-comment-text">
                 {el?.text}
               </p>
             </div>

@@ -55,7 +55,7 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
             </div>
           </div>
         </div>
-        <div className="sortBy">
+        {/* <div className="sortBy">
           <div className="filters-filter" onClick={() => setSort((prev) => !prev)}>
             <div className="filter-category">
               <span className="filter-header">Сортировать</span>
@@ -75,7 +75,6 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
 
             </div>
             <div className={sort ? 'filter-dd-menu' : 'filter-dd-none'}>
-              {/* выпадающий список */}
               <ul className="filter-ul">
                 <li className="filter-dd-el" onClick={handlerSortClick}>По дате добавления</li>
                 <li className="filter-dd-el" onClick={handlerSortClick}>По популярности</li>
@@ -83,7 +82,7 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

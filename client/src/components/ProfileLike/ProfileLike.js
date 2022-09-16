@@ -9,7 +9,7 @@ import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
 import UserLikes from '../UserLikes/UserLikes';
 
-export default function ProfileLike() {
+export default function ProfileLike({ setModalActive, setwind, setModelId }) {
   const auth = useSelector((state) => state.auth);
   const like = useSelector((state) => state.like);
   const model = useSelector((state) => state.model);
@@ -27,7 +27,20 @@ export default function ProfileLike() {
     <div className="profile-general-container">
       <div className="profile-first-container">
         <div className="profile-photo-name-and-btn">
-          <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          <div
+            className="profile-photo-contener"
+            onClick={() => {
+              setwind('avatar');
+              setModalActive(true);
+            }}
+          >
+            <span className="profile-photo-text">Изменить фотографию</span>
+            {
+          (auth?.avatar)
+            ? <img className="profile-photo" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          }
+          </div>
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">
@@ -83,7 +96,17 @@ export default function ProfileLike() {
               </Link>
             </li>
             <li className="profile-one-btn">
-              <Link className="profile-fifth-btn-a" to="/upload">Uploads</Link>
+              <Link
+                className="profile-fifth-btn-a"
+                to="/profile"
+                onClick={() => {
+                  setwind('modelUpload');
+                  setModalActive(true);
+                }}
+              >
+                Загрузить модель
+
+              </Link>
             </li>
           </ul>
         </div>
@@ -107,7 +130,7 @@ export default function ProfileLike() {
           <div>
             {(like.length !== 0) ? (
               <div className="profile-two-sides-left-results-grid">
-                {like?.map((el) => (<UserLikes key={el.id} el={el?.UserModel} like={el?.UserModel?.LikeModels} />))}
+                {like?.map((el) => (<UserLikes key={el.id} el={el?.UserModel} like={el?.UserModel?.LikeModels} setModelId={setModelId} setwind={setwind} setModalActive={setModalActive} />))}
               </div>
             ) : (
               <span className="profile-two-sides-left-results"> No results </span>

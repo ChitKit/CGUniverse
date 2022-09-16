@@ -20,7 +20,9 @@ route.post('/registration', async (req, res) => {
     const user = await User.findOne({ where: { email } });
     if (!user) {
       const newUser = await User.create({ email, name, password: hashPassword });
-      req.session.userSession = { email: newUser.email, name: newUser.name, id: newUser.id };
+      req.session.userSession = {
+        email: newUser.email, name: newUser.name, id: newUser.id, bio: newUser.bio,
+      };
       return res.json({
         email: newUser.email, name: newUser.name, id: newUser.id, avatar: newUser.avatar,
       });
@@ -38,13 +40,34 @@ route.post('/login', async (req, res) => {
     if (user) {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
-        req.session.userSession = { email: user.email, name: user.name, id: user.id };
+        req.session.userSession = {
+          email: user.email, name: user.name, id: user.id, bio: user.bio,
+        };
         return res.json({
           email: user.email, name: user.name, id: user.id, avatar: user.avatar,
         });
       }
     }
     res.status(400).json({ message: 'Email или пароль не верны' });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+route.patch('/bioEdit', async (req, res) => {
+  const { bio } = req.body;
+  console.log(">>>>>>>>>>>>>>>>>", bio);
+  // console.log('SESSSSION', req.session);
+  // console.log(name, email);
+  try {
+    await User.update({ bio }, {
+      where: { id: req.session.userSession.id },
+    });
+    const user = await User.findOne({ where: { id: req.session.userSession.id } });
+    req.session.userSession = {
+      bio: user.bio, id: req.session.userSession.id,
+    };
+    res.json(user);
   } catch (err) {
     console.error(err);
   }

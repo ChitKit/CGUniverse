@@ -26,6 +26,9 @@ import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
 import Footer from './components/Footer/Footer';
 import FAvatarLoading from './components/AvatarLoading/FAvatarLoading';
+import PrevAuth from './components/PrevAuth/PrevAuth';
+import ForBusiness from './components/ForBusiness/ForBusiness';
+import EditBiography from './components/EditBiography/EditBiography';
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -83,18 +86,21 @@ function App() {
                   ) : wind === 'editProfile'
                     ? (
                       <EditProgile auth={auth} setModalActive={setModalActive} />
-                    ) : wind === 'modelUpload'
+                    ) : wind === 'editBio'
                       ? (
-                        <ModelUploader auth={auth} setModalActive={setModalActive} />
-                      ) : wind === 'addPost'
+                        <EditBiography auth={auth} setModalActive={setModalActive} />
+                      ) : wind === 'modelUpload'
                         ? (
-                          <AddPost setModalActive={setModalActive}/>
+                          <ModelUploader auth={auth} setModalActive={setModalActive} />
+                        ) : wind === 'addPost'
+                          ? (
+                            <AddPost setModalActive={setModalActive}/>
                         ) : wind === 'Favatar'
                           ? (
                             <FAvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
-                          ) : (
-                            <p />
-                          )}
+                            ) : (
+                              <p />
+                            )}
       </Modal>
       )}
       {/* <Page /> */}
@@ -120,22 +126,26 @@ function App() {
         )
         }
       <Routes>
-        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} />} />
+        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} setModelId={setModelId} />} />
         <Route
           path="/page"
           element={(
-            <Page
-              setwind={setwind}
-              setModelId={setModelId}
-              setModalActive={setModalActive}
-              setAuthCategory={setAuthCategory}
-              authCategory={authCategory}
-            />
+            <PrevAuth>
+              <Page
+                setwind={setwind}
+                setModelId={setModelId}
+                setModalActive={setModalActive}
+                setAuthCategory={setAuthCategory}
+                authCategory={authCategory}
+              />
+            </PrevAuth>
 )}
         />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
-        <Route path="/profileLike" element={<ProfileLike />} />
+        <Route path="/profileLike" element={<ProfileLike setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} />} />
+        <Route path="/prevauth" element={<PrevAuth />} />
+        <Route path="/forbusiness" element={<ForBusiness />} />
       </Routes>
       <Footer />
 
