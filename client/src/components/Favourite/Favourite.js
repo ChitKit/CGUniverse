@@ -26,6 +26,7 @@ export default function Favourite({
       >
         {FModels?.map((el) => (
           <div
+            key={el.id}
             onClick={() => {
               {
                 setModelId(el.id);
@@ -36,6 +37,7 @@ export default function Favourite({
             }}
             className={`Favourite-card ${isPauzet && 'paused'}`}
           >
+
             <img className="Favourite-card-img" src={`http://localhost:3002${el.pic}`} />
             <h1>{el.name}</h1>
           </div>

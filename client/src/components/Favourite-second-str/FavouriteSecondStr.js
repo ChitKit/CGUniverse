@@ -20,6 +20,7 @@ export default function FavouriteSecondStr({ setwind, setModelId, setModalActive
       <div className="Favourite-second-container" onMouseEnter={() => (setIsPauzet(true))} onMouseLeave={() => (setIsPauzet(false))}>
         {SModels?.map((el) => (
           <div
+          key={el.id}
             onClick={() => {
               {
                 setModelId(el.id);
