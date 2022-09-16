@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Scene from '../Scene/Scene';
 import './HeaaderModel.css';
-import easterBreaker from '../../break';
 
 
 export default function HeaaderModel({ setModalActive, setwind }) {
@@ -26,10 +25,9 @@ export default function HeaaderModel({ setModalActive, setwind }) {
         </div>
         <div className="heaader-model-box-text">
           <p className="heaader-model-text">
-            <span onClick={easterBreaker}>Управляйте</span>
-            {' '}
+            Управляйте
             своими 3D-ресурсами.
-            Распространяйте опыт 3D и AR. Сотрудничайте с другими. Продемонстрируйте свою работу.
+            Распространяйте опыт 3D. Сотрудничайте с другими. Продемонстрируйте свою работу.
             <br />
             {' '}
             Покупайте и продавайте 3D модели.

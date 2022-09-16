@@ -34,3 +34,7 @@
 .modal-content.active {
   transform: scale(1);
 }
+
+.big {
+  width:80%;
+}

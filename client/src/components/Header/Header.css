@@ -8,6 +8,10 @@ li.header-dropdown-li-element {
   list-style-type: none;
 }
 
+#colorHeader{
+  color: white
+}
+
 a.header-dropdown-item {
   text-decoration: none;
   padding: .5em 1em;

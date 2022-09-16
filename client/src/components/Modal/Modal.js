@@ -1,14 +1,16 @@
 import React from 'react';
 import './Modal.css';
 
-export default function Modal({ active, setActive, children }) {
+export default function Modal({
+  active, setActive, children, modelFlag,
+}) {
   return (
     <div
       className={active ? 'modal active' : 'modal'}
       onClick={() => setActive(false)}
     >
       <div
-        className={active ? 'modal-content active' : 'modal-content'}
+        className={active ? `modal-content active ${modelFlag && 'big'}` : 'modal-content'}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

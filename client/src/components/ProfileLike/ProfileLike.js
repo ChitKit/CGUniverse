@@ -48,7 +48,7 @@ export default function ProfileLike({ setModalActive, setwind, setModelId }) {
               </a>
             </h1>
             <div className="profile-btn-edit-profile">
-              <a href="#" className="profile-btn-edit-profile-a">EDIT PROFILE</a>
+              <a href="#" className="profile-btn-edit-profile-a">Редактировать профиль</a>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function ProfileLike({ setModalActive, setwind, setModelId }) {
                   {`${model.length}`}
                   {' '}
                 </span>
-                Models
+                Ваши модели
               </Link>
             </li>
             {/* <li className="profile-one-btn">
@@ -92,7 +92,7 @@ export default function ProfileLike({ setModalActive, setwind, setModelId }) {
                   {`${like.length}`}
                   {' '}
                 </span>
-                Like
+                Понравившиеся
               </Link>
             </li>
             <li className="profile-one-btn">
@@ -115,7 +115,7 @@ export default function ProfileLike({ setModalActive, setwind, setModelId }) {
         <div className="profile-two-sides-left">
           <div className="profile-two-sides-left-popular-and-view">
             <h2 className="profile-two-sides-left-popular-h2">
-              POPULAR 3D MODELS
+              Понравившиеся
             </h2>
             {/* <h2 className="profile-two-sides-left-view">
               <a className="profile-two-sides-left-view-a" href="#">

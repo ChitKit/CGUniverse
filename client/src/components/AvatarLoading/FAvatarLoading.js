@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -28,7 +30,7 @@ export default function FAvatarLoading({
         <h1 className="loading-title">Загрузите главную фотографию профиля</h1>
       </div>
       <div className="input__wrapper">
-        <input name="file" type="file" name="file" id="input__file" className="input input__file" multiple onChange={(e) => setImg(e.target.files[0])} />
+        <input name="file" type="file" id="input__file" className="input input__file" multiple onChange={(e) => setImg(e.target.files[0])} />
         <label htmlFor="input__file" className="input__file-button">
           <span className="input__file-icon-wrapper">
             <img className="input__file-icon" src="./file.png" alt="Выбрать файл" width="25" />

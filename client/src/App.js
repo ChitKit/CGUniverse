@@ -43,6 +43,7 @@ function App() {
   const [activeSearch, setActiveSearch] = useState(true);
   const [postFlag, setpostFlag] = useState(true);
   const [authCategory, setAuthCategory] = useState('Все категории');
+  const [modelFlag, setModelFlag] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3002/auth/auth', {
@@ -64,6 +65,7 @@ function App() {
       <Modal
         active={modalActive}
         setActive={setModalActive}
+        modelFlag={modelFlag}
       >
         {wind === 'log'
           ? (
@@ -80,7 +82,7 @@ function App() {
                 ) : wind === 'onemodel'
                   ? (
                     <div className="api-convas-container-comment">
-                      <SceneOneModel modelId={modelId} setModalActive={setModalActive} />
+                      <SceneOneModel modelId={modelId} setModalActive={setModalActive} setModelFlag={setModelFlag} />
                       <Comment modelId={modelId} />
                     </div>
                   ) : wind === 'editProfile'
@@ -94,10 +96,10 @@ function App() {
                           <ModelUploader auth={auth} setModalActive={setModalActive} />
                         ) : wind === 'addPost'
                           ? (
-                            <AddPost setModalActive={setModalActive}/>
-                        ) : wind === 'Favatar'
-                          ? (
-                            <FAvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
+                            <AddPost setModalActive={setModalActive} />
+                          ) : wind === 'Favatar'
+                            ? (
+                              <FAvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
                             ) : (
                               <p />
                             )}
@@ -126,7 +128,7 @@ function App() {
         )
         }
       <Routes>
-        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} setModelId={setModelId} />} />
+        <Route path="/" element={<Main setModalActive={setModalActive} setwind={setwind} setModelId={setModelId} setModelFlag={setModelFlag} />} />
         <Route
           path="/page"
           element={(

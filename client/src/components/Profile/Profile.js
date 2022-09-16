@@ -62,7 +62,7 @@ export default function Profile({
                 }}
                 className="profile-btn-edit-profile-a"
               >
-                EDIT PROFILE
+                Редактировать профиль
 
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function Profile({
                   {`${model.length}`}
                   {' '}
                 </span>
-                Models
+                Ваши модели
               </Link>
             </li>
             {/* <li className="profile-one-btn">
@@ -108,7 +108,7 @@ export default function Profile({
                   {`${like.length}`}
                   {' '}
                 </span>
-                Like
+                Понравившиеся
               </Link>
             </li>
             <li className="profile-one-btn">
@@ -131,7 +131,7 @@ export default function Profile({
         <div className="profile-two-sides-left">
           <div className="profile-two-sides-left-popular-and-view">
             <h2 className="profile-two-sides-left-popular-h2">
-              POPULAR 3D MODELS
+              Ваши модели
             </h2>
             {/* <h2 className="profile-two-sides-left-view">
               <a className="profile-two-sides-left-view-a" href="#">
@@ -229,7 +229,7 @@ export default function Profile({
               Add your skills
             </a>
           </div> */}
-          
+
         </div>
       </div>
     </div>

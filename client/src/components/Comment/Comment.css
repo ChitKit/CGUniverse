@@ -10,7 +10,7 @@
 
 .comment-div-button-a{
     text-decoration: none;
-    /* color: white; */
+    color: white;
 }
 
 .comment-one-comment{
@@ -19,4 +19,18 @@
     margin-bottom: 1em;
     padding: 0.8em;
     border-radius: 6px;
+}
+
+.comment-div-with-button {
+    width: 172%;
+    margin-top:25%;
+    margin-left: -40%;
+}
+
+.coments {
+    margin-top:10%
+}
+
+.modal-content.active {
+    min-width: max-content;
 }
