@@ -15,6 +15,8 @@ export default function Header({
   const auth = useSelector((state) => state.auth);
   const [navSize, setnavSize] = useState('5rem');
   const [navColor, setnavColor] = useState('transparent');
+  const [logo, setLogo] = useState('/logoBlack512.png');
+  const [CGU, setCGU] = useState('black');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [category, setCategory] = useState([]);
@@ -23,6 +25,8 @@ export default function Header({
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor('#181921') : setnavColor('transparent');
     window.scrollY > 10 ? setnavSize('5rem') : setnavSize('5rem');
+    window.scrollY > 10 ? setLogo('/logoWhite512.png') : setLogo('/logoBlack512.png');
+    window.scrollY > 10 ? setCGU('#FFFFFF') : setCGU('#000');
   };
 
   useEffect(() => {
@@ -65,8 +69,18 @@ export default function Header({
       }}
     >
       <div className="header-container-first">
-        <Link className="header-logo-and-name" to="/">
-          <img className="header-logo" src="/logo512.png" alt="logo" />
+        <Link
+          className="header-logo-and-name"
+          to="/"
+          style={{
+            color: CGU,
+          }}
+        >
+          <img
+            className="header-logo"
+            src={logo}
+            alt="logo"
+          />
           ComputerGraphicsUniverse
         </Link>
       </div>

@@ -19,7 +19,7 @@ function Loader() {
   );
 }
 
-export default function SceneOneModel({ modelId }) {
+export default function SceneOneModel({ modelId, setModelFlag }) {
   const model = useSelector((state) => state.onemodel);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function SceneOneModel({ modelId }) {
     return () => {
       dispatch(getModel(null));
       dispatch(getComments(null));
+      setModelFlag(false);
     };
   }, []);
 

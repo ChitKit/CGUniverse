@@ -1,8 +1,10 @@
+/* eslint-disable no-lone-blocks */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import { getSModels_THUNK } from '../../redux/actions/secondModelsActions';
 import '../Favourite/Favourite.css';
 import './FavouriteSecondStr.css';
@@ -20,7 +22,7 @@ export default function FavouriteSecondStr({ setwind, setModelId, setModalActive
       <div className="Favourite-second-container" onMouseEnter={() => (setIsPauzet(true))} onMouseLeave={() => (setIsPauzet(false))}>
         {SModels?.map((el) => (
           <div
-          key={el.id}
+            key={el.id}
             onClick={() => {
               {
                 setModelId(el.id);
@@ -76,7 +78,7 @@ export default function FavouriteSecondStr({ setwind, setModelId, setModalActive
         <button
           className="btn btn-all-model"
           onClick={() => {
-            navigate('/profile');
+            navigate('/page');
           }}
         >
           ПОСМОТРЕТЬ ВСЕ МОДЕЛИ

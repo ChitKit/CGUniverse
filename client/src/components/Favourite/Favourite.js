@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable react/jsx-props-no-multi-spaces */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +8,7 @@ import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Favourite.css';
 
 export default function Favourite({
-  setwind, setModelId, setModalActive,
+  setwind, setModelId, setModalActive, setModelFlag,
 }) {
   const { FModels } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -29,6 +31,7 @@ export default function Favourite({
             key={el.id}
             onClick={() => {
               {
+                setModelFlag(true);
                 setModelId(el.id);
                 setwind('onemodel');
                 setModalActive(true);

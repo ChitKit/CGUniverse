@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect, useState } from 'react';
 import './Filter.css';
@@ -8,7 +9,7 @@ export default function Filter({ setAuthCategory, setAuthSort }) {
   const [category, setCategory] = useState([]); // array category
   const [categoryName, setCategoryName] = useState(''); // categorye`s name
   const [sortName, setSortName] = useState(''); // sort`s name
-  
+
   useEffect(() => {
     fetch('http://localhost:3002/api/category')
       .then((res) => res.json())

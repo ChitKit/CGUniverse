@@ -40,8 +40,8 @@ export default function Comment({ modelId }) {
           </a>
         </button>
       </div>
-      <div>
-        <h2>Comments</h2>
+      <div className="coments">
+        <h2>Комментарии</h2>
         <div>
           <form onSubmit={submitHandler} className="comment-addform">
             <input type="text" name="text" onChange={inputHandler} value={data?.text} placeholder="Оставь комментарий" />
