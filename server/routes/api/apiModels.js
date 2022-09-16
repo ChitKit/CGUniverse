@@ -71,4 +71,11 @@ route.get('/posts', async (req, res) => {
   res.json(newPost);
 });
 
+route.delete('/posts/:id', async (req, res) => {
+  const { id } = req.params;
+  await Finder.destroy({ where: { id } });
+  const allPosts = await Finder.findAll();
+  res.json(allPosts);
+});
+
 module.exports = route;

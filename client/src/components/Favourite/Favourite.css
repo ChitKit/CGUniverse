@@ -1,11 +1,11 @@
 @keyframes move_bg {
     from {
         background-position: 0 0;
-        right: -1025px;
+        right: -45em;
     }
     to {
         background-position: 100px 0;
-        right: 1030px;
+        right: 45em;
     }
   }
 
@@ -21,6 +21,7 @@
     display: flex;
     justify-content:space-around;
     flex-wrap: nowrap;
+    width: 100%;
 }
 
 .Favourite-card {
@@ -29,7 +30,7 @@
     width: 360px;
     height: 220px;
     position: relative;
-    animation: move_bg 60s linear infinite alternate;
+    animation: move_bg 50s linear infinite alternate;
     margin: 20px 10px;
 }
 

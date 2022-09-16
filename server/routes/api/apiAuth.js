@@ -23,7 +23,9 @@ route.post('/registration', async (req, res) => {
       req.session.userSession = {
         email: newUser.email, name: newUser.name, id: newUser.id, bio: newUser.bio,
       };
-      return res.json({ email: newUser.email, name: newUser.name, id: newUser.id });
+      return res.json({
+        email: newUser.email, name: newUser.name, id: newUser.id, avatar: newUser.avatar,
+      });
     }
     res.status(400).json({ message: 'Такой email уже занят' });
   } catch (err) {
@@ -41,7 +43,9 @@ route.post('/login', async (req, res) => {
         req.session.userSession = {
           email: user.email, name: user.name, id: user.id, bio: user.bio,
         };
-        return res.json({ email: user.email, name: user.name, id: user.id });
+        return res.json({
+          email: user.email, name: user.name, id: user.id, avatar: user.avatar,
+        });
       }
     }
     res.status(400).json({ message: 'Email или пароль не верны' });

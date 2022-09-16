@@ -9,6 +9,7 @@ import filterSortReducer from './filterSortReducer';
 import sortReducer from './sortReducer';
 import oneModelReducer from './oneModelReducer';
 import searchReducer from './searchReducer';
+import postReducer from './postReducer';
 import categoryReducer from './categoryReducer';
 
 
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   sort: sortReducer,
   search: searchReducer,
   category: categoryReducer,
+  posts: postReducer,
 });
 
 export default rootReducer;

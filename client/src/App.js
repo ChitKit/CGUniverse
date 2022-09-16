@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
 // import { useEffect } from 'react';
 import { useEffect, useState } from 'react';
@@ -23,6 +24,8 @@ import Comment from './components/Comment/Comment';
 import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
+import Footer from './components/Footer/Footer';
+import FAvatarLoading from './components/AvatarLoading/FAvatarLoading';
 import PrevAuth from './components/PrevAuth/PrevAuth';
 import ForBusiness from './components/ForBusiness/ForBusiness';
 import EditBiography from './components/EditBiography/EditBiography';
@@ -73,7 +76,7 @@ function App() {
                 <BasketShop />
               ) : wind === 'avatar'
                 ? (
-                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} />
+                  <AvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
                 ) : wind === 'onemodel'
                   ? (
                     <div className="api-convas-container-comment">
@@ -91,10 +94,13 @@ function App() {
                           <ModelUploader auth={auth} setModalActive={setModalActive} />
                         ) : wind === 'addPost'
                           ? (
-                            <AddPost setpostFlag={setpostFlag} postFlag={postFlag} />
-                          ) : (
-                            <p />
-                          )}
+                            <AddPost setModalActive={setModalActive}/>
+                        ) : wind === 'Favatar'
+                          ? (
+                            <FAvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
+                            ) : (
+                              <p />
+                            )}
       </Modal>
       )}
       {/* <Page /> */}
@@ -137,10 +143,11 @@ function App() {
         />
         <Route path="/profile" element={<Profile setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
         <Route path="/profileLike" element={<ProfileLike setModalActive={setModalActive} setwind={setwind} avatar={avatar} setModelId={setModelId} />} />
-        <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} postFlag={postFlag} />} />
+        <Route path="/findComand" element={<FindComand setModalActive={setModalActive} setwind={setwind} />} />
         <Route path="/prevauth" element={<PrevAuth />} />
         <Route path="/forbusiness" element={<ForBusiness />} />
       </Routes>
+      <Footer />
 
     </div>
   );

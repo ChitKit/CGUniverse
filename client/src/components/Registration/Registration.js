@@ -41,33 +41,33 @@ export default function Registration({ setModalActive }) {
   };
 
   return (
-    <>
+    <div className="reg-page">
       <div>
         <h1 className="form-title">
           Регистрация
         </h1>
       </div>
       <section className="form-section">
-        <form className="form" method="post" onSubmit={submitHandler}>
+        <form className="form form-reg" method="post" onSubmit={submitHandler}>
           <div className="mb-3">
-            <label htmlFor="name" className="form-label">Имя</label>
+            <label htmlFor="name" className="form-label-reg">Имя</label>
             <input type="text" className="form-control" name="name" onChange={inputHandler} value={data?.name || ''} />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label-reg">Email</label>
             <input type="text" className="form-control" name="email" onChange={inputHandler} value={data?.email || ''} />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Пароль</label>
+            <label htmlFor="password" className="form-label-reg">Пароль</label>
             <input type="password" className="form-control" name="password" onChange={inputHandler} value={data?.password || ''} />
           </div>
-          <div className="mb-3">
-            <label htmlFor="dublPassword" className="form-label">Повторите пароль</label>
+          <div className="mb-3 mb-3-rep">
+            <label htmlFor="dublPassword" className="form-label-reg">Повторите пароль</label>
             <input type="password" className="form-control" name="dublPassword" onChange={inputHandler} value={data?.dublPassword || ''} />
           </div>
-          <button disabled={pass} type="submit" className="btn btn-registration">Зарегистрироваться</button>
+          <button disabled={pass} type="submit" className="btn btn-registration btn-color">Зарегистрироваться</button>
         </form>
       </section>
-    </>
+    </div>
   );
 }

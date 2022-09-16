@@ -1,7 +1,7 @@
 const express = require('express');
 const fileMiddleware = require('../../middleware/file');
 const modelFileMiddlewar = require('../../middleware/modelFile');
-const { User, UserModel } = require('../../db/models');
+const { User, UserModel, Finder } = require('../../db/models');
 
 const router = express.Router();
 
@@ -11,6 +11,19 @@ router.post('/photoAvatar', fileMiddleware.single('avatar'), async (req, res) =>
       console.log(req.session);
       const us = await User.findOne({ where: { id: req.session.userSession.id } });
       us.avatar = req.file.path;
+      us.save();
+      res.json(us);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post('/FphotoAvatar', fileMiddleware.single('avatar'), async (req, res) => {
+  try {
+    if (req.file) {
+      const us = await Finder.findOne({ where: { id: req.session.userSession.id } });
+      us.images = req.file.path;
       us.save();
       res.json(us);
     }

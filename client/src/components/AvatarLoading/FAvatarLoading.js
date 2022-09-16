@@ -1,13 +1,11 @@
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../../redux/actions/authActions';
 import './AvatarLoading.css';
+import { getPosts_THUNK } from '../../redux/actions/postsAction';
 
-export default function AvatarLoading({
+export default function FAvatarLoading({
   img, setImg, setAvatar, setModalActive,
 }) {
   const disptach = useDispatch();
@@ -15,14 +13,14 @@ export default function AvatarLoading({
     const data = new FormData();
     data.append('avatar', img);
     console.log(data);
-    axios.post('http://localhost:3002/upload/photoAvatar', data, {
+    axios.post('http://localhost:3002/upload/FphotoAvatar', data, {
       headers: {
         'Content-Type': 'mulpipart/form-data',
       },
       withCredentials: true,
     })
 
-      .then((res) => { setAvatar(res.data.path); disptach(setAuth(res.data)); });
+      .then((res) => { disptach(getPosts_THUNK(res.data)); setModalActive(false); });
   };
   return (
     <div className="loading-container">
