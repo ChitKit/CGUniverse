@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFModels_THUNK } from '../../redux/actions/farstModelsActions';
+import { searchModels_THUNK } from '../../redux/actions/searchAction';
 import './Favourite.css';
 
-export default function Favourite() {
+export default function Favourite({
+  setwind, setModelId, setModalActive,
+}) {
   const { FModels } = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,9 +18,26 @@ export default function Favourite() {
   return (
     <div className="favourite-back">
       <h1 className="Favourite-title">Наши рекомендации:</h1>
-      <div className="Favourite-container" onMouseEnter={() => (setIsPauzet(true))} onMouseLeave={() => (setIsPauzet(false))}>
+      <div
+        className="Favourite-container"
+
+        onMouseEnter={() => (setIsPauzet(true))}
+        onMouseLeave={() => (setIsPauzet(false))}
+      >
         {FModels?.map((el) => (
-          <div key={el.id} className={`Favourite-card ${isPauzet && 'paused'}`}>
+          <div
+            key={el.id}
+            onClick={() => {
+              {
+                setModelId(el.id);
+                setwind('onemodel');
+                setModalActive(true);
+                dispatch(searchModels_THUNK(el.id));
+              }
+            }}
+            className={`Favourite-card ${isPauzet && 'paused'}`}
+          >
+
             <img className="Favourite-card-img" src={`http://localhost:3002${el.pic}`} />
             <h1>{el.name}</h1>
           </div>
