@@ -19,7 +19,7 @@ export default function FavouriteSecondStr() {
     <div className="Favourite-second-BG">
       <div className="Favourite-second-container" onMouseEnter={() => (setIsPauzet(true))} onMouseLeave={() => (setIsPauzet(false))}>
         {SModels?.map((el) => (
-          <div className={`Favourite-second-card ${isPauzet && 'paused'}`}>
+          <div key={el.id} className={`Favourite-second-card ${isPauzet && 'paused'}`}>
             <img className="Favourite-card-img" src={`http://localhost:3002${el.pic}`} />
             <h1>{el.name}</h1>
           </div>
