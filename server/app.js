@@ -12,7 +12,6 @@ const apiComment = require('./routes/api/apiComment');
 const apiCategory = require('./routes/api/apiCategory');
 const apiLikes = require('./routes/api/apiLikes');
 const apiMulter = require('./routes/api/apiMulter');
-const apiUser = require('./routes/api/apiUser');
 
 const app = express();
 const PORT = process.env.PORT ?? 3002;
@@ -53,7 +52,6 @@ app.use('/api/comment', apiComment);
 app.use('/api/category', apiCategory);
 app.use('/apilike', apiLikes);
 app.use('/upload', apiMulter);
-app.use('/user', apiUser);
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
