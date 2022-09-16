@@ -114,10 +114,10 @@ export default function Header({
               Для бизнеса
             </a>
             <div className="header-dropdown-menu1">
-              <a className="header-dropdown-item1" href="#">11111 </a>
-              <a className="header-dropdown-item1" href="#">22222 </a>
+              <Link to="/forbusiness" className="header-dropdown-item1">Сотрудничество </Link>
+              {/* <a className="header-dropdown-item1" href="#">22222 </a>
               <a className="header-dropdown-item1" href="#">33333 </a>
-              <a className="header-dropdown-item1" href="#">44444 </a>
+              <a className="header-dropdown-item1" href="#">44444 </a> */}
             </div>
           </div>
         </ul>

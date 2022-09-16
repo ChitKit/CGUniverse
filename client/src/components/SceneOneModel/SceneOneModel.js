@@ -47,7 +47,6 @@ export default function SceneOneModel({ modelId }) {
 
         </Suspense>
       </Canvas>
-      <a href={`http://localhost:3002${model?.path}`}>Скачать</a>
     </div>
 
   );
