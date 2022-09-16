@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPost_THUNK } from '../../redux/actions/postsAction';
+import './AddPost.css';
 
-export default function AddPost({ setpostFlag, postFlag }) {
+export default function AddPost({ setModalActive }) {
   const [userInput, setUserInput] = useState({});
   const [dealList, setDealList] = useState([]);
   const dispatch = useDispatch();
@@ -22,27 +23,26 @@ export default function AddPost({ setpostFlag, postFlag }) {
     //   .then((res) => res.json())
     //   .then((data) => setDealList((prev) => [...prev, data]));
     setUserInput('');
+    setModalActive(false);
   }
 
   return (
     <div className="AddPost-container">
-      <h1>Размещение Объявления</h1>
-      <section>
-        <div>
-          <h1>h</h1>
-        </div>
-        <div>
-          <form method="post" onSubmit={submitHAndler}>
-            <input value={userInput?.title} name="title" placeholder="Заголовок" onChange={(e) => setUserInput((prev) => ({ ...prev, [e.target.name]: e.target.value }))} />
-            <input value={userInput?.description} name="description" placeholder="Описание" onChange={(e) => setUserInput((prev) => ({ ...prev, [e.target.name]: e.target.value }))} />
-            <button
-              type="submit"
-            >
-              Найти членов команды
+      <h1 className="form-title">Размещение Объявления</h1>
+      <section className="form-section form-section-log">
+        <form method="post form-log" onSubmit={submitHAndler}>
+          <input type="text" className="inputADD" value={userInput?.title} name="title" placeholder="Заголовок" onChange={(e) => setUserInput((prev) => ({ ...prev, [e.target.name]: e.target.value }))} />
+          <div />
+          <input type="text" className="inputADD" value={userInput?.description} name="description" placeholder="Описание" onChange={(e) => setUserInput((prev) => ({ ...prev, [e.target.name]: e.target.value }))} />
+          <div />
+          <button
+            className="btn btn-registration btn-color"
+            type="submit"
+          >
+            Найти членов команды
 
-            </button>
-          </form>
-        </div>
+          </button>
+        </form>
       </section>
     </div>
   );

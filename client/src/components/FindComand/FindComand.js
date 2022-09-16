@@ -43,15 +43,17 @@ export default function FindComand({ setModalActive, setwind }) {
                   <div
                     className="FindComand-photo-contener"
                     onClick={() => {
-                      setwind('avatar');
+                      setwind('Favatar');
                       setModalActive(true);
                     }}
                   >
                     <span className="FindComand-photo-text">Изменить фотографию</span>
                     {
-          (auth?.avatar !== null)
-            ? <img className="FindComand-image" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+          el?.images
+            ? <img className="FindComand-image" src={`http://localhost:3002/${el.images}`} alt="пустое фото" />
+
             : <img className="FindComand-image" src="/noPhoto.jpeg" alt="пустое фото" />
+
           }
                   </div>
                   {/* <img className="FindComand-image" src="/noPhoto.jpeg" alt="" /> */}
@@ -59,13 +61,13 @@ export default function FindComand({ setModalActive, setwind }) {
                     <h1 className="FindComand-post-title">{el.title}</h1>
                     <p className="FindComand-post-description">{el.description}</p>
                     {
-                      (el.user_id === auth.id) ? (
+                      (el.user_id === auth?.id) ? (
                         <img
                           className="FindComand-del"
                           src="/del.png"
                           alt="del"
                           onClick={() => {
-                            if (el.user_id === auth.id) {
+                            if (el.user_id === auth?.id) {
                               dispatch(deletePost_THUNK(el.id));
                             }
                           }}

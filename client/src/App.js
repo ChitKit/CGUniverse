@@ -25,6 +25,7 @@ import AddPost from './components/FindComand/AddPost';
 import SearchResult from './components/SearchResult/SearchResult';
 import ModelUploader from './components/ModelUploader/ModelUploader';
 import Footer from './components/Footer/Footer';
+import FAvatarLoading from './components/AvatarLoading/FAvatarLoading';
 
 function App() {
   const [modalActive, setModalActive] = useState(false);
@@ -87,10 +88,13 @@ function App() {
                         <ModelUploader auth={auth} setModalActive={setModalActive} />
                       ) : wind === 'addPost'
                         ? (
-                          <AddPost />
-                        ) : (
-                          <p />
-                        )}
+                          <AddPost setModalActive={setModalActive}/>
+                        ) : wind === 'Favatar'
+                          ? (
+                            <FAvatarLoading img={img} setImg={setImg} setAvatar={setAvatar} auth={auth} setModalActive={setModalActive} />
+                          ) : (
+                            <p />
+                          )}
       </Modal>
       )}
       {/* <Page /> */}
