@@ -1,23 +1,35 @@
 /* eslint-disable react/no-unknown-property */
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Html, useProgress } from '@react-three/drei';
 import Model from '../Model/Model';
 import './scene.css';
 
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center>
+      {progress}
+      {' '}
+      % loaded
+    </Html>
+  );
+}
+
 export default function Scene() {
   return (
-    <Suspense fallback={null}>
-      <Canvas className="can" camera={{ position: [0.5, 1, 1], fov: 30 }}>
+    <Canvas className="can" camera={{ position: [0.5, 1, 1], fov: 30 }}>
+      <Suspense fallback={<Loader />}>
 
         <ambientLight intensity={0.2} />
         <pointLight position={[10, 30, 10]} />
         <Model />
+
         <OrbitControls />
         {/* <Environment preset="dawn" background /> */}
 
-      </Canvas>
-    </Suspense>
+      </Suspense>
+    </Canvas>
 
   );
 }

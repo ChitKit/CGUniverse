@@ -1,0 +1,36 @@
+.comment-container{
+
+}
+
+/* .comment-div-button{
+    background: #ff8507;
+    font-weight: 700;
+    border-radius: 3px;
+} */
+
+.comment-div-button-a{
+    text-decoration: none;
+    color: white;
+}
+
+.comment-one-comment{
+    text-align: left;
+    background-color: #28c9ff;
+    margin-bottom: 1em;
+    padding: 0.8em;
+    border-radius: 6px;
+}
+
+.comment-div-with-button {
+    width: 172%;
+    margin-top:25%;
+    margin-left: -40%;
+}
+
+.coments {
+    margin-top:10%
+}
+
+.modal-content.active {
+    min-width: max-content;
+}

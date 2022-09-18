@@ -1,5 +1,5 @@
 .filter-container{
-  padding: 25px 50px;
+  padding: 25px 0;
   font-size: 14px;
   background: #fff;
   color: #555;
@@ -8,9 +8,9 @@
 }
 .filter-content-header {
   display:flex;
+  width: 80%;
   justify-content: space-between;
-  max-width: 65vw;
-  min-width: 580px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 .sortBy{

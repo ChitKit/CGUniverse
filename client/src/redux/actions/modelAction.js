@@ -30,16 +30,19 @@ export const editModel_THUNK = (modelId) => (dispatch) => {
 };
 
 export const getModels_THUNK = (userId) => (dispatch) => {
-  fetch(`http://localhost:3002/api/models?userid=${userId || 0}`)
+  fetch(
+    'http://localhost:3002/api/models',
+    {
+      credentials: 'include',
+    },
+  )
     .then((res) => res.json())
     .then((res) => {
       dispatch(getModels(res));
     });
 };
 
-export const filterModels_THUNK = (categ) => (dispatch) => {
-  fetch('http://localhost:3002/api/models')
-    .then((res) => res.json())
-    .then((res) => dispatch(filterModels()));
-};
+
+
+
 

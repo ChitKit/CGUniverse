@@ -1,0 +1,49 @@
+.searchresult-container{
+  position: fixed;
+  top: 80px;
+  z-index: 11111;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(250, 250, 250);
+  border-radius: 3px;
+  min-height: 50px;
+  width: 30vw;
+}
+.searchresult-answers {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.searchresult-answers:hower {
+  background-color: rgb(150, 144, 144);
+}
+
+
+.searchresult-answers-li {
+  cursor: pointer;
+  text-decoration: none;
+  color: #323b40;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  
+}
+
+.searchresult-answers-li:hover {
+  cursor: pointer;
+  background: #f0f0f0;
+  color: #1caad9;
+}
+
+.searchresult-answer-text {
+  display: flex;
+  align-items: center;
+}
+.searchresult-answer-img {
+  width: 80px;
+  height: 40px;
+}
+.searchresult-answer-img-img{
+  width: 100%;
+  height: 100%;
+}

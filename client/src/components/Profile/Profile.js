@@ -1,35 +1,53 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import UserModels from '../UserModels/UserModels';
 import { getModels_THUNK } from '../../redux/actions/modelAction';
 import { getLike_THUNK } from '../../redux/actions/likeAction';
-import { setAuth } from '../../redux/actions/authActions';
 
-export default function Profile() {
-  const { auth } = useSelector((state) => state);
-  const { like } = useSelector((state) => state);
-  const { model } = useSelector((state) => state);
+
+export default function Profile({
+  setModalActive, setwind, setModelId,
+}) {
+  const auth = useSelector((state) => state.auth);
+  const like = useSelector((state) => state.like);
+  const model = useSelector((state) => state.model);
   const dispatch = useDispatch();
 
-  // добавить в танк из useSelector auth
-  useEffect(() => {
-    dispatch(getModels_THUNK());
-  }, []);
-
+  // загрузка фото
 
   // добавить в танк из useSelector auth
   useEffect(() => {
-    dispatch(getLike_THUNK());
-  }, []);
+    if (auth) {
+      dispatch(getModels_THUNK(auth?.id));
+      dispatch(getLike_THUNK(auth?.id));
+    }
+  }, [auth]);
+
+  console.log(auth);
+
 
   return (
     <div className="profile-general-container">
       <div className="profile-first-container">
         <div className="profile-photo-name-and-btn">
-          <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          <div
+            className="profile-photo-contener"
+            onClick={() => {
+              setwind('avatar');
+              setModalActive(true);
+            }}
+          >
+            <span className="profile-photo-text">Изменить фотографию</span>
+            {
+          (auth?.avatar)
+            ? <img className="profile-photo" src={`http://localhost:3002/${auth?.avatar}`} alt="пустое фото" />
+            : <img className="profile-photo" src="profile-photo.jpeg" alt="пустое фото" />
+          }
+          </div>
           <div className="profile-name-btn">
             <h1 className="profile-name-h1">
               <a className="profile-name-a" href="#">
@@ -37,7 +55,16 @@ export default function Profile() {
               </a>
             </h1>
             <div className="profile-btn-edit-profile">
-              <a href="#" className="profile-btn-edit-profile-a">EDIT PROFILE</a>
+              <p
+                onClick={() => {
+                  setwind('editProfile');
+                  setModalActive(true);
+                }}
+                className="profile-btn-edit-profile-a"
+              >
+                Редактировать профиль
+
+              </p>
             </div>
           </div>
         </div>
@@ -54,7 +81,7 @@ export default function Profile() {
                   {`${model.length}`}
                   {' '}
                 </span>
-                Models
+                Ваши модели
               </Link>
             </li>
             {/* <li className="profile-one-btn">
@@ -81,11 +108,21 @@ export default function Profile() {
                   {`${like.length}`}
                   {' '}
                 </span>
-                Like
+                Понравившиеся
               </Link>
             </li>
             <li className="profile-one-btn">
-              <a className="profile-fifth-btn-a" href="/upload">Uploads</a>
+              <Link
+                className="profile-fifth-btn-a"
+                to="/profile"
+                onClick={() => {
+                  setwind('modelUpload');
+                  setModalActive(true);
+                }}
+              >
+                Загрузить модель
+
+              </Link>
             </li>
           </ul>
         </div>
@@ -94,7 +131,7 @@ export default function Profile() {
         <div className="profile-two-sides-left">
           <div className="profile-two-sides-left-popular-and-view">
             <h2 className="profile-two-sides-left-popular-h2">
-              POPULAR 3D MODELS
+              Ваши модели
             </h2>
             {/* <h2 className="profile-two-sides-left-view">
               <a className="profile-two-sides-left-view-a" href="#">
@@ -109,7 +146,15 @@ export default function Profile() {
           <div>
             {(model.length !== 0) ? (
               <div className="profile-two-sides-left-results-grid">
-                {model?.map((el) => (<UserModels key={el.id} el={el} />))}
+                {model?.map((el) => (
+                  <UserModels
+                    setModelId={setModelId}
+                    setwind={setwind}
+                    setModalActive={setModalActive}
+                    key={el.id}
+                    el={el}
+                  />
+                ))}
               </div>
             ) : (
               <span className="profile-two-sides-left-results"> No results </span>
@@ -119,7 +164,15 @@ export default function Profile() {
         <div className="profile-two-sides-right">
           <div className="profile-two-sides-right-table">
             <h3 className="profile-two-sides-first-tabel-title"> ABOUT</h3>
-            <a className="profile-two-sides-first-tabel-links" href="#">
+            <p className="profile-two-sides-first-tabel-p">{auth?.bio}</p>
+            <a
+              className="profile-two-sides-first-tabel-links"
+              href="#"
+              onClick={() => {
+                setwind('editBio');
+                setModalActive(true);
+              }}
+            >
               Edit your biography
             </a>
             {/* <h3 className="profile-two-sides-first-tabel-title"> CATEGORY</h3>
@@ -176,6 +229,7 @@ export default function Profile() {
               Add your skills
             </a>
           </div> */}
+
         </div>
       </div>
     </div>

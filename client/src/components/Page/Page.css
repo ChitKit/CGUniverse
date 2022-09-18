@@ -1,6 +1,7 @@
 .container{
   background-color: #f2f2f2;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 40px;
 }
 .content-header {
   margin-bottom: 20px;

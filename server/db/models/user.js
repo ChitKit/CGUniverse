@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({
-      UserModel, Comment, LikeModel, OrderTap, Order, CartItem, Favorites,
+      UserModel, Comment, LikeModel, OrderTap, Order, CartItem, Favorites, Finder,
     }) {
       this.hasMany(UserModel, { foreignKey: 'user_id' });
       this.hasMany(Comment, { foreignKey: 'user_id' });
@@ -19,12 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Order, { foreignKey: 'user_id' });
       this.hasMany(CartItem, { foreignKey: 'user_id' });
       this.hasMany(Favorites, { foreignKey: 'user_id' });
+      this.hasMany(Finder, { foreignKey: 'user_id' });
     }
   }
   User.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    avatar: DataTypes.STRING,
+    bio: DataTypes.STRING,
     role: DataTypes.STRING,
     balance: DataTypes.INTEGER,
   }, {

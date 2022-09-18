@@ -1,7 +1,18 @@
+.profile-photo-contener { display: block; position: relative; }
+.profile-photo-contener:after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
+.profile-photo-contener:hover:before,
+.profile-photo-contener:hover:after { opacity: 1; }
+
+.profile-photo-text {
+    position: relative;
+    top: 25%;
+    z-index: 1;
+}
+
 .profile-general-container {
     background-color: #f2f2f2;
-    position: absolute;
-    height: 100%;
+    position: relative;
+    height: 70em;
     width: 100%;
 }
 
@@ -15,7 +26,27 @@
     /* margin: 0% 3rem; */
 }
 
-.profile-photo {}
+.profile-photo-contener {
+    width:100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    color: rgba(255, 255, 255, 0);
+}
+
+.profile-photo-contener:hover {
+    color: rgba(255, 255, 255, 0.851);
+}
+
+.profile-photo {
+    width:100px;
+    height: 100px;
+    border-radius: 50px;
+    position: relative;
+    top: -37%;
+    z-index: 0;
+}
 
 .profile-name-btn {
     display: flex;
@@ -106,7 +137,7 @@
 
 .profile-third-btn-ul {
     list-style-type: none;
-    position: absolute;
+    position: relative;
     display: none;
     top: 100%;
     left: 0;
@@ -170,12 +201,11 @@
 
 .profile-two-sides-left-results-grid {
     display: grid;
-    column-gap: 90px;
-    row-gap: 90px;
+    column-gap: 120px;
+    row-gap: 120px;
     grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
- }
+}
 
-  
 
 
 

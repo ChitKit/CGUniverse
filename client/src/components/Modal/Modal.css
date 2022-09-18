@@ -25,7 +25,7 @@
   padding: 15px 15px;
   border-radius: 10px;
   background-color: rgb(254, 254, 254);
-  width: 50vw;
+  /* width: 50vw; */
   transform: scale(0.5);
   transition: 0.3s all;
   z-index: 51;
@@ -35,7 +35,6 @@
   transform: scale(1);
 }
 
-
-
-
-
+.big {
+  width:80%;
+}
