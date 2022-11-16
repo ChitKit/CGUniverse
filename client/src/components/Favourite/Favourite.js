@@ -45,42 +45,6 @@ export default function Favourite({
             <h1>{el.name}</h1>
           </div>
         ))}
-        {/* <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div>
-        <div className={`Favourite-card ${isPauzet && 'paused'}`}>
-          <img className="Favourite-card-img" src="/car-lada.png" />
-          <h1>Жига</h1>
-        </div> */}
       </div>
     </div>
   );

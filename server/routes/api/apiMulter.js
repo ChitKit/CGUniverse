@@ -7,8 +7,10 @@ const router = express.Router();
 
 router.post('/photoAvatar', fileMiddleware.single('avatar'), async (req, res) => {
   try {
+    console.log(req.body);
+    console.log(req.file);
     if (req.file) {
-      console.log(req.session);
+      // console.log(req.session);
       const us = await User.findOne({ where: { id: req.session.userSession.id } });
       us.avatar = req.file.path;
       us.save();
